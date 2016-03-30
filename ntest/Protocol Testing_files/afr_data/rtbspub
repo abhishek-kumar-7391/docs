@@ -1,0 +1,3 @@
+window.rtbsBidA = (typeof window.rtbsBidA  === 'object' ) ? window.rtbsBidA : {};
+window.rtbsBidA["545422542"] = {no_bid: true, variant: 0, tp: "http://opt.media.net/rtbs/timeline?url=http%3A%2F%2Fwww.guru99.com%2Fprotocol-testing.html&domain=guru99.com&size=728x90&ext_user_id=2188424398713648294&iid=0&auction_id=53f7120a3b5a435293dedc7ab08c0094&ip=103.25.205.2&crid=545422542&rtbW=0&app_dis=2&cc=IN&rc=HR&bname=&bid_type=-1&bmlevel=0<cm_win_macro>", bl: []};
+;

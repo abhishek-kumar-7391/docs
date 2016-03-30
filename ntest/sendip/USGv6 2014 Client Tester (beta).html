@@ -1,0 +1,201 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>USGv6 2014 Client Tester (beta)</title>
+<link href="mailto:webmaster@antd.nist.gov" rev="made">
+<script src="USGv6%202014%20Client%20Tester%20%28beta%29_files/ga.js" async="" type="text/javascript"></script><script language="JavaScript" id="_fed_an_js_tag" src="USGv6%202014%20Client%20Tester%20%28beta%29_files/federated-analytics.js">
+</script>
+</head>
+<body text="#000000" bgcolor="FFFFFF"><center>
+<center><a href="http://www.nist.gov/"><img src="USGv6%202014%20Client%20Tester%20%28beta%29_files/ANTD.jpg"></a>
+
+<h1>USGv6 2014 Client Tester (beta)</h1></center>
+</center>
+
+<h2>1. Description</h2>
+The <a href="http://usgv6-2014.antd.nist.gov/">USGv6 2014 Client Tester</a>
+located at <b>usgv6-2014.antd.nist.gov</b>
+is a set of online tools to allow you to test and demonstrate IPv6 client
+functionality from client systems in your agency. The various tools in
+this test suite are <i>only</i> accessible over IPv6; hence, by
+connecting to them and exercising them, you can demonstrate the
+sort of IPv6 client capability required by the 2014 mandate.
+<p>
+The tools are essentially stripped-down versions of common services
+(web server, DNS server, mail server, etc.) which merely record
+external accesses. Each access is tied to a key value presented by
+the client; as your client system proceeds through the various tools,
+its accesses can thus be correlated, and later queried, by this key.
+</p><p>
+Since it is client capability that is being tested, all connections
+have to be initiated from your end. To facilitate this, the tester
+uses some simple HTML and Javascript to prompt your client to open
+the appropriate connections. <a href="http://www-x.antd.nist.gov/ipv6/usgv6-2014.tester.txt">Here
+is the tester script</a>, if you wish to examine it. A more detailed
+explanation of the various tests follows.
+
+</p><p>
+</p><h3><a href="http://usgv6-2014.antd.nist.gov/">Run the tester</a></h3>
+
+<h2>2. Tester appearance</h2>
+<p>Here is a screenshot of the tester web frontend, running in a Google
+Chrome browser. Appearance in other browsers should be very similar.
+Click on the image for a larger version.<br>
+<a href="http://www-x.antd.nist.gov/ipv6/4a.postwarning.png"><img src="USGv6%202014%20Client%20Tester%20%28beta%29_files/4a.png"></a>
+
+</p><h2>3. Tests performed</h2>
+<h4>Automated tests</h4>
+<ol>
+<li><p><b>Key generation</b> Not a test per se, but the tester Javascript
+generates a random 9-digit number used as a key to tie the various
+test results together. You can use this key subsequently to look up
+the results of your tests. Keys are only good for the day they are
+generated; if you need to look up old test results, you'll have to
+know the date they were run. (More or less; the lookup will also
+check for two days on either side of the date you specify.)
+</p></li><li><p><b>http over IPv6</b> Merely being able to connect to the tester
+demonstrates this.
+</p></li><li><p><b>https over IPv6</b> To demonstrate the ability to connect to
+https (http over SSL/TLS) servers, the tester webpage includes a
+link to a <a href="https://usgv6-2014.antd.nist.gov/WIN.jpg">small
+image <img src="USGv6%202014%20Client%20Tester%20%28beta%29_files/WIN.jpg"></a> available only via https.
+</p><p>Note that this beta test version
+currently uses only a self-signed certificate. Many browsers
+reject self-signed certificates by default. In this case, you will
+see instead a red "X": <img src="USGv6%202014%20Client%20Tester%20%28beta%29_files/FAIL.jpg">. To get the test to
+succeed, you will have to force your browser to accept the certificate.
+By going to 
+<a href="https://usgv6-2014.antd.nist.gov/selfsigned.html">this page</a>,
+and accepting all the dire warnings your browser presents, you should
+be able to do so.
+</p></li><li><p><b>DNS lookups</b> The tester records the host name and address
+presented by your browser, attempts forward and reverse DNS
+lookups on them, and records the results. Note that these lookups
+are being performed at the tester (server) end; they may fail if
+your client system is not listed in publicly-accessible DNS.
+</p></li><li><p><b>DNS over IPv6</b> Even when looking up IPv6 addresses, many
+clients use IPv4 connections to speak to DNS servers. The tester
+webpage includes a link to another copy of the <a href="http://usgv6-2014.usgv6.antd.nist.gov/WIN.jpg">green check image <img src="USGv6%202014%20Client%20Tester%20%28beta%29_files/WIN.jpg"></a>, in this
+case from a domain (<b>usgv6.antd.nist.gov</b>)
+for which there is only IPv6-based DNS service.
+</p><p>In this case, if you see only a red "X" <img src="USGv6%202014%20Client%20Tester%20%28beta%29_files/FAIL.jpg">, you may
+need to choose a different local DNS resolver, one capable of running
+over IPv6.
+</p></li><li><p><b>whois information</b> The tester attempts to look up the
+publicly-available information about your client address from
+<a href="http://whois.arin.net/">the ARIN Whois-RESTful web service</a>,
+parses and presents the results.
+</p></li></ol>
+<h4>Manual tests</h4>
+The tests above should all run automatically from your browser
+(assuming you've done any needed setup) as soon as you hit the
+"Submit Request" button. The other tests to be run
+require some amount of manual intervention, such
+as running a mail client or other program on your system.
+<p>Hence, the tester cannot run these automatically, but it does
+attempt to assist you by providing links
+which may (depending on your browser) allow you to run the appropriate
+clients simply by clicking on the appropriate links. Here are some
+screen shots of the links the tester provides; again, click on
+them for larger versions:<br>
+<a href="http://www-x.antd.nist.gov/ipv6/6a.postsubmit1.png"><img src="USGv6%202014%20Client%20Tester%20%28beta%29_files/6a.png"></a>
+<a href="http://www-x.antd.nist.gov/ipv6/7a.postsubmit2.png"><img src="USGv6%202014%20Client%20Tester%20%28beta%29_files/7a.png"></a>
+
+
+</p><ol start="7">
+<li><p><b>email connectivity </b> The tester prompts your browser to
+send an email via a <b>mailto</b> link. For this test to work, your browser
+must be configured to call an appropriate local email program. How to do
+so depends on the browser; for Firefox, go to <i>Edit/Preferences/Applications</i>
+and select the desired <i>Action</i> for the <b>mailto</b>
+<i>Content Type</i>. Note that this has to be a <i>local</i> email
+program; a web-based mailer like Gmail will not appear to be coming from
+your client system. If your browser is appropriately configured, it
+should call up your email program with the destination, subject and
+mail body already set; you need merely send the email to have the
+results recorded.
+</p><p>
+If the <b>mailto</b> method doesn't work, you can
+manually run the email test as follows:
+</p><ul>
+<li><p>With your local email client, send email to <b>testsubmit@usgv6-2014.antd.nist.gov</b>.</p></li>
+<li><p>Set the Subject line to
+	</p><blockquote>Key <i>&lt;your key value&gt;</i></blockquote>
+where of course <i>&lt;your key value&gt;</i> should be replaced by the 9-digit numeric key that was generated for your tests.</li>
+<li><p>In the body of the email, also include a line
+	</p><blockquote>Key <i>&lt;your key value&gt;</i></blockquote>
+with exactly the same content.</li>
+<li><p>No other content in the email is required.</p></li>
+</ul>
+</li><li><p><b>sftp connectivity </b> The tester provides a link to fetch a
+file via sftp, the ssh-based secure file transfer protocol. For this to
+work, your browser must be configured to understand sftp URLs.
+</p><p>
+Again, if your browser does not support this, you can run the test
+manually as follows:
+</p><ul>
+<li><p>With your local sftp client, connect to <b>testsubmit@usgv6-2014.antd.nist.gov</b>:
+</p><blockquote><b>sftp testsubmit@usgv6-2014.antd.nist.gov</b></blockquote>
+Use your 9-digit key as the password.
+</li><li><p>You needn't transfer any files to pass the test, but if you wish,
+there is a single file <b>sftptestfile.txt</b> you can fetch as an additional test.</p></li>
+</ul>
+</li><li><p><b>ftp connectivity </b> There is an analogous test for ftp
+connectivity. Note that anonymous ftp is <i>not</i> used for this test;
+instead, you again connect as user <b>testsubmit</b> using your
+key value as the password.
+</p><p>
+In more detail (assuming your browser can't use the link provided
+by the tester):
+</p><ul>
+<li><p>With your local ftp client, connect to <b>usgv6-2014.antd.nist.gov</b>:
+</p><blockquote><b>ftp usgv6-2014.antd.nist.gov</b></blockquote>
+</li><li><p>At the "Name" or "User" prompt, enter <b>testsubmit</b>
+</p></li><li><p>At the "Password" prompt, enter your 9-digit key.
+</p></li><li><p>Again, you needn't transfer any files to pass, but if you wish,
+there is a single file <b>ftptestfile.txt</b> you can fetch as an additional test.</p></li>
+</ul>
+</li><li><p><b>IMAP/POP connectivity </b> There is also a test for IMAP/POP
+connectivity. Unfortunately, this test can't really be automated, as it
+depends on the details of your email client. Basically, you'll need to
+do the following:
+</p><ul>
+<li><p>Add an account to your email client with username <b>testsubmit</b>
+and incoming mail server <b>usgv6-2014.antd.nist.gov</b>. Choose either IMAP
+or POP3 as the protocol. Outgoing server doesn't really matter.
+</p></li><li><p>Again, you'll likely have to persuade your client to accept the
+self-signed certificate used by the server.
+</p></li><li><p>Try to fetch mail; at the "Password" prompt, enter your 9-digit key.
+</p></li><li><p>There is a single (uninteresting) message you can fetch to complete
+the test.
+</p></li></ul>
+After testing is complete, feel free to delete this account.
+</li></ol>
+<p>
+</p><h3><a href="http://usgv6-2014.antd.nist.gov/">Run the tester</a></h3>
+<h2>4. Tester results lookup</h2>
+The tester collects the results of the various tests and places them
+in a database. Currently, the only interface provided to this is a raw
+dump of the database contents. At a later point, we will provide more
+comprehensive reporting tools.
+<p>
+We support results lookup over both IPv4 and IPv6:
+</p><ul>
+<li> <a href="http://www-x.antd.nist.gov/ipv6/lookup.html">Results lookup (IPv4 accessible)</a>
+</li><li> <a href="http://usgv6-2014.antd.nist.gov/lookup.html">Results lookup (IPv6 accessible only)</a>
+</li></ul>
+
+Here is an example of the retrieval screen. Again, click for a larger
+version:<br>
+<a href="http://www-x.antd.nist.gov/ipv6/8.resultlookup.png"><img src="USGv6%202014%20Client%20Tester%20%28beta%29_files/8.png"></a>
+
+
+<center><br><br>
+To return to the ANTD IPv6 software distribution main page:<br>
+<a href="http://www-x.antd.nist.gov/ipv6/">http://www-x.antd.nist.gov/ipv6/</a>
+<br><p>Point Of Contact: <br><a href="mailto:usgv6-project@nist.gov">usgv6-project@nist.gov</a><br>
+</p></center>
+<p>
+<i>Last update: Fri, December 6, 2013</i>
+
+
+</p></body></html>

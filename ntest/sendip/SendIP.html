@@ -1,0 +1,217 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>SendIP</title>
+<link href="mailto:webmaster@antd.nist.gov" rev="made">
+<script src="SendIP_files/ga.js" async="" type="text/javascript"></script><script language="JavaScript" id="_fed_an_js_tag" src="SendIP_files/federated-analytics.js">
+</script>
+</head>
+<body text="#000000" bgcolor="FFFFFF"><center>
+<h1>SendIP</h1></center>
+
+<h2>Description</h2>
+<a href="http://www.earth.li/projectpurple/progs/sendip.html">SendIP</a>
+is a tool which allows creating (and, of course, sending)
+arbitrary IP (v4 and v6) packets. Packets may have essentially
+any set of IPv6/IPv4 headers in essentially any order. A wide
+variety of header types is supported, including almost all of
+the defined IPv6 extension headers.
+<p>
+SendIP allows detailed control of all header fields, but defaults
+to reasonable values for those fields you are not interested in.
+As a simple command-line program, SendIP is trivially scriptable.
+</p><p>
+SendIP was originally written by
+<a href="http://www.earth.li/projectpurple/ppl/mike.html">Mike Ricketts </a>
+of <a href="http://www.earth.li/projectpurple/">Project Purple</a>. The
+version distributed here is based on 2.5, with numerous additions, particularly
+in the areas of IPv6 extension headers and IPsec support.
+
+</p><h2>Documentation</h2>
+<a href="http://www-x.antd.nist.gov/ipv6/sendip/sendipman.html">SendIP manual entry</a>
+
+<h2>Download</h2>
+<ul>
+<li>Version 0: <a href="http://www-x.antd.nist.gov/ipv6/sendip/sendip-2.5-mec-0.tar.gz">2.5-mec-0 (initial release, 30 Sep 2009)</a>. Provided in source code (tar.gz) format.
+<ul><uh>Adds these header types:</uh>
+<li>AH - IPv4 or v6 (dummy only)
+</li><li>ESP - IPv4 or v6 (dummy only)
+</li><li>hop-by-hop or destination options - IPv6
+<ul>
+<li>pad0
+</li><li>padN
+</li><li>router alert
+</li><li>jumbo
+</li><li>home address
+</li><li>(arbitrary)
+</li></ul>
+</li><li>fragment - IPv6
+</li><li>GRE tunnel - IPv4 or IPv6
+</li><li>routing - types 0, 1, 2
+</li><li>IPIP (4in4), 4in6, 6in4 and 6in6 tunneling
+</li></ul>
+
+</li><li>Version 1: <a href="http://www-x.antd.nist.gov/ipv6/sendip/sendip-2.5-mec-1a4.tar.gz">2.5-mec-1a4 (sixth release, 4 Feb 2010)</a>. Provided in source code (tar.gz) format.
+<ul><uh>Adds these header types:</uh>
+<li>AH - IPv4 or v6 (with authentication module support)
+</li><li>ESP - IPv4 or v6 (with authentication and encryption module support)
+</li><li>Wrapped ESP (WESP) - provisional
+</li></ul>
+
+</li><li>Version 2: <a href="http://www-x.antd.nist.gov/ipv6/sendip/sendip-2.5-mec-2a2.tar.gz">2.5-mec-2a2 (eighth release, 2 Sep 2010)</a>. Provided in source code (tar.gz) format.
+<ul><uh>Adds this header/data type:</uh>
+<li>SCTP - IPv4 or v6 (with initial chunk support)
+</li></ul>
+
+</li><li>Version 3: <a href="http://www-x.antd.nist.gov/ipv6/sendip/sendip-2.5-mec-3a1.tar.gz">2.5-mec-3a1 (ninth release, 12 Feb 2015)</a>. Provided in source code (tar.gz) format.
+<ul><uh>Adds these features:</uh>
+<li>Looping
+</li><li>More randomized argument values, including addresses
+</li><li>Argument values may be taken from files
+</li><li>Cleanup and bug fixes
+</li></ul>
+
+</li><li><img src="SendIP_files/shin.gif" alt="New!"> Version 3': <a href="http://www-x.antd.nist.gov/ipv6/sendip/sendip-2.5-mec-3a2.tar.gz">2.5-mec-3a2 (tenth release, 24 Apr 2015)</a>. Provided in source code (tar.gz) format.
+<ul><uh>Adds these features:</uh>
+<li>CIDR-style address specification (IPv4 only for now)
+</li><li>Timestamp payloads - for timer tests
+</li><li>Faster random number generation
+</li><li>Yet more cleanup and bug fixes
+</li></ul>
+</li></ul>
+
+<h2>Mini-FAQ</h2>
+<p><b>Q: What is SendIP good for?</b> A: SendIP allows creation of
+IP packets with arbitrary contents. As such, it should be useful for
+many purposes: protocol implementation testing, firewall and IDS testing,
+network test gear testing, etc.
+</p><p><b>Q: What is it not good for?</b> A: As SendIP works at the individual
+packet level, it is less suitable for higher-level testing, e.g., testing
+some new html feature. The new version of SendIP can create multiple packets,
+but isn't exactly a stress testing tool - with each field being set
+individually on each packet created, it limits the send rate to perhaps
+some low number of thousands per second.
+</p><p>Some level of stress testing can
+be achieved by running multiple invocations of SendIP in parallel - 
+SendIP is almost entirely CPU-bound, so if the number of invocations of it 
+is limited to the number of CPU cores on the system, all can run
+with almost perfect parallelism. As one example, on a 24-core system
+(Intel E5-2640 CPUs at 2.50GHz), we were able to generate and send over
+500,000 packets per second using 20 invocations of SendIP in parallel.
+</p><p><b>Q: Which headers and protocols are supported?</b> A: 
+ipv4 (including ipip, aka 4in4), ipv6 (including 6in4, 4in6 and 6in6),
+icmp, icmpv6, tcp, udp, bgp, rip, ripng, ntp, ah, dest, esp, frag,
+gre, hop, route, wesp. For more information, see
+<a href="http://www-x.antd.nist.gov/ipv6/sendip/sendipman.html">the manual entry</a>.
+</p><p><b>Q: What operating systems does SendIP run on?</b> A: The
+original SendIP has support for a number of operating systems, including
+various versions of FreeBSD, Solaris, and Linux. The additions here have
+only been tested on Linux (specifically, recent Fedora and Ubuntu releases);
+they may well work elsewhere as well, but this is totally untested.
+</p><p><b>Q: How does looping work?</b> A: Normally, each invocation of
+<b>sendip</b> produces exactly one packet. If, however, a <i>-l N</i>
+argument is supplied, it runs <i>N</i> times, producing <i>N</i> packets.
+The packets will all be identical unless one or more arguments are
+either random (rN) or taken from a file (fF); see below.
+</p><p><b>Q: How are string and numeric arguments handled?</b> A: Many of the header
+fields, and the packet data area, can be specified via the following
+syntax:
+</p><ul>
+<li>0xXXXX -  interpreted as a number in hex, converted to a binary
+number in network byte order.
+</li><li>0XXXX - interpreted as a number in octal, converted to a binary
+number in network byte order.
+</li><li>rN - N "random" bytes
+</li><li>zN - N nul (zero) bytes
+</li><li>fF - read the argument from the next line in file F
+</li><li>other - taken as a literal string
+</li></ul>
+IPv4 addresses (and, hopefully soon, IPv6 addresses) can also be specified
+with CIDR-style notation, where, e.g., 10.1.2.0/24 means "choose a
+random host address out of that subnet."
+<p><b>Q: How do file (fF) arguments work?</b> A: Argument values may
+be stored in files; every time a file argument of the form fF appears,
+the next line from file F is then read in and substituted for the
+corresponding argument.
+</p><p>For example, assume the file F contains the four lines:
+</p><dl compact="compact">
+<dt></dt><dd>
+10.1.1.1
+</dd><dt></dt><dd>
+1000
+</dd><dt></dt><dd>
+10.1.1.2
+</dd><dt></dt><dd>
+2000
+</dd></dl>
+<p>
+
+Then the arguments
+</p><dl compact="compact">
+<dt>
+<i>-l 2 -p ipv4 -id fF p udp -ud fF</i>
+</dt></dl>
+<p>
+
+would produce two UDP packets, one to 10.1.1.1:1000 and
+one to 10.1.1.2:2000.
+When the lines in the file are exhausted, it is rewound
+and read from the beginning again. (Actually, for the sake of
+efficiency, the entire file is read into memory at the start of
+the program, so "rewinding" simply means moving a pointer back
+to the start of the memory area.)
+
+</p><p><b>Q: How do timestamp (tN) arguments work?</b> A: An argument
+of the form tN is replaced by a <i>struct timeval</i> timestamp,
+produced by a call to <i>gettimeofday()</i>, padded out with the
+appropriate number of nulls. (On 64-bit systems, the timestamp
+occupies 16 bytes, so this would be N-16 nulls. If N is less than
+16, the timestamp is truncated.) The timestamp is in host byte
+order, simply the exact binary form obtained by <i>gettimeofday()</i>.
+</p><p>
+If this is embedded in the data portion of a packet, the receiver
+can get an idea of the end-to-end latency by comparing this value
+with that produced by <i>gettimeofday()</i> on the local system - assuming,
+of course, that sender and receiver clocks are sufficiently well
+coordinated. A test program which demonstrates this (<b>udptimer</b>)
+is included with the source.
+
+</p><p><b>Q: What is the IPsec support?</b> A: Basic creation of AH and
+ESP headers (and trailers, in the case of ESP) is supported. In
+addition, external authentication and/or encryption modules may be
+called, to give more realistic emulation of IPsec behavior.
+</p><p>
+Demonstration authentication and encryption modules are included,
+which simply xor a "key" with the appropriate packet contents; these
+are obviously not intended to provide any actual security, but rather
+as an indication of how the module interfaces work. They should suffice
+for some purposes, though, such as testing heuristics for identifying
+ESP NULL packets.
+</p><p><b>Q: Why is the Wrapped ESP (WESP) support "provisional"?</b> A: As of
+this writing, WESP is still in draft form, with no real implementations
+to compare against. So the code will quite likely need some revision when
+the final RFC is issued.
+</p><p><b>Q: How "alpha" is the alpha version?</b> A: Pretty alpha. Much of
+the code has not been tested yet, since we are still developing the
+code we were going to test it against. It compiles nicely, though.
+</p><p><b>Q: Will you make RPMs for SendIP</b> A: Probably. There's already
+a spec file, so it's really just a matter of housekeeping. Perhaps
+when the next non-alpha version is released.
+</p><p><b>Q: What is the license for SendIP?</b> A: The
+<a href="http://www.earth.li/projectpurple/progs/sendip.html">original
+version</a> is distributed under the GNU General Public License (GPL)
+version 2, and hence this version is, too. More precisely, the code
+developed here, as being, in a sense, a U.S. government publication,
+is technically in the public domain, but since it consists of extensions
+to GPL code and is provided along with such code, in practice the GPL
+applies to it as well.
+
+</p><center><br><br>
+To return to the ANTD IPv6 software distribution main page:<br>
+<a href="http://www-x.antd.nist.gov/ipv6/">http://www-x.antd.nist.gov/ipv6/</a>
+<br><p>Point Of Contact: <br><a href="mailto:webmaster@antd.nist.gov">webmaster@antd.nist.gov</a><br>
+</p></center>
+<p>
+<i>Last update: Mon, April 27, 2015</i>
+
+
+</p></body></html>

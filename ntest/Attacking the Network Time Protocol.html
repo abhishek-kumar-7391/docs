@@ -1,0 +1,202 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>Attacking the Network Time Protocol</title>
+<meta name="Author" content="Sharon Goldberg">
+<meta name="Description" content="Sharon Goldberg">
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<!-- TITLE -->
+<p></p>
+<font face="Century Gothic" size="5" color="#8B008B">
+<b><i>Attacking the Network Time Protocol</i></b><br>
+</font>
+<font face="Century Gothic" size="4" color="#8B008B"><a href="https://sites.google.com/site/aanchalmalhotra1990/">Aanchal Malhotra</a>, Isaac E. Cohen, Erik Brakke, and <a href="https://www.cs.bu.edu/%7Egoldbe/">Sharon Goldberg</a><br>Boston University
+</font>
+
+<p>Time is a fundamental building block for computing applications, and is heavily utilized by many cryptographic protocols (eg. <a href="https://www.thawte.com/resources/getting-started/ssl-faq/%22">digital certificates and TLS</a>,
+ <a href="http://culubas.blogspot.com/2011/05/timejacking-bitcoin_802.html">bitcoin</a>, <a href="https://en.wikipedia.org/wiki/Kerberos_%28protocol%29">authentication with Kerberos</a>, <a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions">DNSSEC</a>, etc).  Time on computer clocks is commonly set using the Network Time Protocol (<a href="https://www.ietf.org/rfc/rfc5905.txt">NTP</a>).   We have uncovered several security issues affecting unauthenticated NTP and its reference implementation <a href="http://www.ntp.org/downloads.html">ntpd</a>.
+  These issues allow an attacker to either (a) alter time on computer 
+systems that set their clocks using NTP (timeshifting attacks), or (b) 
+prevent those systems from synchronizing their clocks (denial of service
+ attacks).
+
+</p><p>
+<font face="Century Gothic" size="4" color="#8B008B">
+<b><a href="https://eprint.iacr.org/2015/1020.pdf">Technical paper</a></b></font>&nbsp;&nbsp;&nbsp;
+<font face="Century Gothic" size="3" color="#8B008B"><a href="#attack">Our attacks</a>&nbsp;&nbsp;&nbsp;
+<a href="#imp">Advice for ntp implementors</a>&nbsp;&nbsp;&nbsp;
+<a href="#user">Advice for ntp users</a>&nbsp;&nbsp;&nbsp;
+<a href="#ack">Acknoweldgements</a>&nbsp;&nbsp;&nbsp;
+</font>
+
+
+</p><p>
+<b><font face="Century Gothic" size="3" color="#8B008B">Our attacks:</font></b>
+
+</p><p>
+</p><ol>
+<p>
+</p><li><b><a name="a1">Attack 1 (Denial of Service by Spoofed Kiss-o'-Death).</a></b><a name="a1">
+ We present an attack that could be used to deactivate NTP on most of 
+the computers in the Internet using only a single attacking machine.   
+An off-path attacker, located anywhere on the Internet, can exploit 
+NTP's rate-limiting mechanism--- the </a><a href="https://tools.ietf.org/html/rfc5905#section-7.4">Kiss-o'-Death (KoD) packet</a>---to
+ disable NTP at a victim client.  This attack exploits the fact that 
+ntpd versions earlier than 4.2.8p4 allow an off-path attacker to 
+trivially spoof a single KoD packet for each of the client's 
+preconfigured servers; upon receipt of the spoofed KoD, the client stops
+ querying its servers for days or even years,  and can therefore no 
+longer update its clock.   Because the attacker need only send a few 
+Kiss-o'-Death packets per victim client, standard network scanning tools
+ (nmap, zmap) can be adapted to very quickly launch this attack, in 
+bulk, on most of the ntpd clients in the Internet. This vulnerability is
+ described in <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7704">CVE-2015-7704</a>, and in Section V.A-V.C of our technical paper.
+
+    <p></p></li><li><a name="a2"><b>Attack 2 (Denial of Service by Priming the Pump).</b> Even if the vulnerability that allows KoD packets to be trivially spoofed (see </a><a href="#a1">Attack 1</a>)
+ is patched, an off-path attacker can still disable NTP at a victim 
+client.  This attack once again exploits rate-limiting via the KoD 
+packet.  Here, the attacker <i>elicits</i> a valid KoD packet from the 
+client's preconfigured servers by 'priming the pump', i.e., sending the 
+servers a high volume of queries that are spoofed to look like they come
+ from the client. The servers then start rate-limiting the client, 
+responding to each of its subsequent queries with a valid KoD packet. 
+Upon receipt of the KoD, the client stops querying its servers, and can 
+no longer update its local clock.   This attack has the same effect as <a href="#a1">Attack 1</a>,
+ but requires the attacker expend more resources by sending more packets
+ to the client's servers.  This vulnerability is described in <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7705">CVE-2015-7705</a> with more details in Section V.B-V.C of our technical paper.
+
+<p>
+</p></li><li><b><a name="a3">Attack 3 (Timeshifting by Reboot).</a></b><a name="a3"> We discuss how an on-path attacker that hijacks traffic to an NTP server (using, for example, </a><a href="http://queue.acm.org/detail.cfm?id=2668966">BGP</a> or <a href="http://unixwiz.net/techtips/iguide-kaminsky-dns-vuln.html">DNS</a>
+ hijacks) can shift time on the server's clients.   Under normal 
+conditions, if NTP attempts to update the local clock by a value that 
+exceeds the <i>panic threshold</i> (about 16 minutes), then the NTP 
+client "SHOULD exit with a diagnostic message to the system log".   We 
+discuss how to circumvent the panic threshold by exploiting ntpd's 
+behavior upon reboot.      We also present the small-step-big-step 
+attack, which allows an attacker that reboots the client to stealthily 
+create a big time step and then quickly bring the client's clock back to
+ normal; this attack is useful for stealthily flushing a client's cache,
+ or to causing a specific cryptographic object to expire.  Our 
+small-step-big-step attack is described in <a href="https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-5300">CVE-2015-5300</a> and Section IV.B of our technical paper.
+
+<p>
+</p></li><li><b>Attack 4 (Timeshifting by Fragmentation).</b> We show 
+how an off-path attacker can exploit IPv4 packet fragmentation to shift 
+time on a client.  We explain why NTP's clock discipline algorithms 
+require our attack to craft a stream of self-consistent packets (rather 
+than just one packet), and demonstrate its feasibility with a 
+proof-of-concept implementation. This attack depends on IPv4 
+fragmentation policies at the client and server OS, rather than on 
+weakness in ntpd or the NTP protocol. See Section VI of our technical 
+paper.
+</li></ol>
+Our technical paper discuss the implications on these attacks on other 
+core Internet protocols (including authentication, caching, TLS 
+certificates, bitcoin, DNSSEC, and the RPKI) and  quantifies their 
+attack surface using Internet measurements.
+
+<p>
+<img src="Attacking%20the%20Network%20Time%20Protocol_files/new.bmp"><b>Attacks on NTP's Authenticated Broadcast Mode.</b>  On January 19, 2016, we released new attacks on NTP's authenticated broadcast model.  See details <a href="http://www.cs.bu.edu/%7Egoldbe/papers/NTPbroadcast.html">here</a>.
+  We do not recommend the use of NTP's broadcast mode, unless both the 
+broadcast clients and the broadcast server are protected by a firewall.
+
+</p><p>
+<b><font face="Century Gothic" size="3" color="#8B008B">Full Technical Paper:</font></b>
+</p><ul>
+
+<li><b>Attacking the Network Time Protocol</b><br>
+Aanchal Malhotra, Isaac E. Cohen, Erik Brakke, and Sharon Goldberg<br>
+ePrint (Cryptology) Report (2015/1020). October 21, 2015.<br>
+To appear at <a href="https://www.internetsociety.org/events/ndss-symposium-2016">NDSS'16</a>, San Diego, CA. Feb 2016.
+<a href="https://eprint.iacr.org/2015/1020.pdf">pdf</a>. &nbsp;&nbsp;&nbsp; <br>
+
+<p>
+</p></li><li>
+<a href="http://www.cs.bu.edu/%7Egoldbe/papers/ntpRump.pdf">slides</a> from Charles River Crypto Day, October 2015.
+</li></ul>
+
+<p>
+<b><a name="imp"><font face="Century Gothic" size="3" color="#8B008B">For NTP implementors: How should I patch my NTP implementation?</font></a></b><a name="imp">
+
+</a></p><p><a name="imp">
+At the very minimum, you should apply the following simple fix to ensure that your implementation is not vulnerable to </a><a href="#a1">Attack 1</a>, our Denial-of-Service by Spoofed Kiss-o'-Death attack in <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7704">CVE-2015-7704</a>:
+ make sure that your client implementation drops KoD packets that do not
+ pass 'TEST2' (origin timestamp validation).  This should be a simple 
+fix: KoD packets are a special kind of NTP mode 4 packet, and regular 
+mode 4 packets are required to pass TEST2; you just need to make sure 
+that KoD packets are also required to pass TEST2.  See also Section V.A 
+of our technical paper.
+
+</p><p>Section V.G of our technical paper provides various suggestions for implementors that would like to mitigate the risk of <a href="#a2">Attack 2</a>, our Denial-of-Service by Priming-the-Pump attack in <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7705">CVE-2015-7705</a>.  One option is to apply techniques developed for rate-limiting other protocols, e.g., <a href="http://ss.vix.su/%7Evixie/isc-tn-2012-1.txt">Response Rate Limiting (RRL)</a>
+ in the DNS; the idea here is to require that when server is 
+rate-limiting a client with KoDs, it must still send legitimate 
+responses (instead of a KoD) to some random fraction of the client's 
+queries. For this to be effective, NTP clients should also limit the 
+period
+for which they are willing to keep quiet upon receipt of a KoD; not 
+querying the server for over days or years upon receipt of a single KoD 
+packet is excessive and invites abuse.
+
+</p><p>Section IV.B of our technical paper explains why ntpd is vulnerable to the small-step-big-step attack (<a href="#a3">Attack 3</a>).  To patch this, one should edit <font face="courier">ntp_loopfilter.c</font> to ensure that the <font face="courier">allow_panic</font>
+ variable is set to FALSE after the very first clock update upon 
+initialization. Implementors can also prevent ntpd clients from putting 
+'INIT'  in the reference ID of their NTP packets upon initializing; this
+ would make it more difficult for attackers to know when initialization 
+is taking place, raising the bar for attacks that exploit reboot.
+
+
+</p><p>We also suggest that the NTP community take another look at 
+authenticating NTP traffic. Traffic from client to server AND from 
+server to client should be authenticated.  See Section V.G of our 
+technical paper.
+
+</p><p>
+<b><a name="user"><font face="Century Gothic" size="3" color="#8B008B">For NTP users: How should I protect my NTP servers and clients?</font></a></b><a name="user">
+</a></p><ol><a name="user">
+</a><li><a name="user"><b>Attack 1 and Attack 2 (Denial of Service).</b> Upgrade to </a><a href="http://www.ntp.org/">ntpd v4.2.8p4</a>.  To see what ntpd version you are running, log into to your NTP server and type <font face="courier">ntpq</font> and then <font face="courier">rv</font>.   Also, monitor the system log for error messages of the form <i>"receive: Unexpected origin timestamp from %s"</i>, which could indicate that you are subject to a priming-the-pump attack. <!--NTPsec has also been patched for <a name="a1">Attack 1</a>.-->
+
+<p>
+</p></li><li><b>Attack 3 (Timeshifting by Reboot).</b> Monitor system logs for suspicious panic events or restarts of ntpd. Alternatively, do not run ntpd with the <font face="courier">-g</font> option enabled. (NOTE: most operating systems run ntpd with <font face="courier">-g</font> as the default.)
+
+<p>
+</p></li><li><b>Attack 4. (Fragmentation). </b>   Our fragmentation attacks requires an NTP server that runs on an OS that accepts <a href="https://en.wikipedia.org/wiki/Path_MTU_Discovery">path MTU discovery (PMTU) requests</a> to fragment to a 68-byte MTU.
+
+<p><i>Running an NTP server?</i> Check if it may be vulnerable to our 
+fragmentation attack by entering its IP address into NTP Server 
+Fragmentation Vulnerability Test
+  box below.     Fortunately, many modern OSes, like  <a href="https://support.microsoft.com/en-us/kb/893066">Windows</a>,
+ do not accept accept requests to fragment to a 68-byte MTU by default; 
+your NTP server is more likely to be at risk if it runs on an older 
+operating system.  If your server is vulnerable, you should change the 
+OS configuration to ensure it does not accept requests to fragment to a 
+68-byte MTU, or upgrade to more recent version.  For example, on <a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt">Linux</a>, make sure that the <font face="courier">min_pmtu</font> parameter is larger than 90, and on <a href="http://docs.oracle.com/cd/E26505_01/html/E37386/chapter4-21.html%22">Solaris</a>, make sure that the  <font face="courier">ip_pmtu_min</font> parameter is larger than 90.
+
+  <b>NOTE:</b> Our network measurements indicate that servers running on
+ SunOS or Linux 2.2.13 are especially vulnerable to our IPv4 
+fragmentation attack; if your NTP server is running on one of these 
+OSes, we strongly suggest that you upgrade to a newer OS.
+
+</p><p><i>Running an NTP client?</i>  Check if your client is taking time from vulnerable servers. Log into your client, type  <font face="courier">ntpq</font> and then <font face="courier">peers</font>,
+ refer to the leftmost column in the output to get a list of the time 
+servers used by your client, and test each of these servers by entering 
+its IP/hostname in the NTP Server Fragmentation Vulnerability Test box 
+below.  (You can also find the list of servers in  <font face="courier">ntp.conf</font>.)  If one of your servers is vulnerable, you can replace it with a <a href="http://support.ntp.org/bin/view/Support/SelectingOffsiteNTPServers">different server</a> in <font face="courier">ntp.conf</font>; see <a href="http://support.ntp.org/bin/view/Support/ConfiguringNTP#Section_6.10.">here</a>.
+
+<br> <iframe src="Attacking%20the%20Network%20Time%20Protocol_files/server.html" style="border:0px #FFFFFF none;" scrolling="no" marginheight="0px" marginwidth="0px" frameborder="1" width="100%">Sidebar Form</iframe>
+</p></li></ol>
+
+<p>
+<b><a name="ack"><font face="Century Gothic" size="3" color="#8B008B">Acknowledgements:</font></a></b><a name="ack">
+<br>We thank the </a><a href="http://www.networktimefoundation.org/">Network Time Foundation</a>, <a href="http://www.ntpsec.org/">NTPsec</a>, Cisco, and <a href="https://access.redhat.com/security/team/">RedHat's security team</a> for quickly issuing patches for various issues described in this work. We thank Jared Mauch and the <a href="http://openntpproject.org/">openNTPproject</a>
+ for measurement data and assistance with coordinating responsible 
+disclosure of our attacks. Our work was supported, in part, by NSF 
+awards 1347525, 1350733 and 1012910 and a gift from Cisco.   Any 
+opinions, findings and conclusions or recommendations expressed in this 
+material are those of the authors and do not necessarily reflect the 
+views of the sponsors.
+
+</p><p><font face="Century Gothic" size="2" color="#8B008B">This research was first disclosed on August 20, 2015 and made public on October 21, 2015.</font>
+
+
+</p></body></html>
