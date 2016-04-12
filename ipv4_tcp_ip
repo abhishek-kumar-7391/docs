@@ -1,0 +1,14 @@
+headerlen = 20 bytes unless options are present, max 60 bytes since the header len is 4 bit field.
+
+The header checksum is calculated over the IP header only. It does not cover any data that follows
+the header. ICMP, IGMP, UDP, and TCP all have a checksum in their own headers to cover their
+header and data.
+If any packet is discarded due to the checksum errors, then it is upto the higher layer protocols
+to detect missing and retransmit. IP does not do anything in that regard.
+ICMP, IGMP, UDP, and TCP all use the same checksum algorithm, although TCP and UDP
+include various fields from the IP header, in addition to their own header and data.
+Checksum implementation : RFC 1071 [Braden, Borman, and Partridge 1988]
+
+IP can receive a datagram from TCP, UDP, ICMP, or IGMP (that is, a
+locally generated datagram) to send, or one that has been received from a network interface (a
+datagram to forward).

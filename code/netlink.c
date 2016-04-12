@@ -8,8 +8,13 @@ int main(int argc, char *argv[]) {
 	int fd = -1;
 	struct sockaddr_nl nl_sock;
 	struct msghdr msg;
+	struct sockaddr_nl dest;
+	struct nlmsghdr *nlh;
+	struct iovec iov;
 
 	memset(&msg, '\0', sizeof (struct msghdr));
+	memset(&dest, '\0', sizeof (struct sockaddr_nl));
+	memset(&nl_sock, '\0', sizeof (struct sockaddr_nl));
 	fd = socket(AF_NETLINK, SOCK_RAW, NETLINK_NETFILTER);
 	if(fd < 0){
 		perror("socket");
@@ -25,7 +30,18 @@ int main(int argc, char *argv[]) {
 		perror("bind");
 		exit(EXIT_FAILURE);
 	}
-	msg.msg_name = (void*)&nl_sock;
-	msg.msg_namelen = sizeof (nl_sock);
+	dest.nl_family = AF_NETLINK;
+	/* if the message is for another process, not the kernel, then pid should be 
+	 * other process's pid and groups should be 0 */
+	dest.nl_pid = 0; // should be a unique 32 bit integer 
+	dest.nl_groups = 0; // to recieve messages only for the given protocol type; unicast
+
+	nlh = (struct nlmsghdr*)malloc(NLMSG_SPACE(MAX_PAYLOAD));
+	memset(nlh, 0, NLMSG_SPACE(MAX_PAYLOAD));
+	nlh->nlmsg_len = NLMSG_SPACE(MAX_PAYLOAD);
+	nlh->nlmsg_pid = getpid();
+	nlh->nlmsg_flags = 0;
+	iov.iov_base = (void *)nlh;
+	iov.iov_len = nlh->nlmsg_len;
 	return 0;
 }
