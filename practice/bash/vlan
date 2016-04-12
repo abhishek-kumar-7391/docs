@@ -1,0 +1,27 @@
+#! /bin/bash
+
+vlan_count=1
+ipbase="10"
+i=0
+j=2
+a=0
+b=0
+file="file_vlan"
+if [ -e $file ]; then
+	rm -f ./$file
+fi
+while [ $vlan_count -lt 500 ]
+do
+	ip="$ipbase.$a.$b.$j netmask 255.255.255.0"
+	echo " vlan $vlan_count">>file_vlan
+	echo "  ip address $ip">>file_vlan
+	
+	if [ $b -gt 254 ]; then
+		a=$((a+1))
+	else
+		b=$((b+1))
+	fi
+	
+	i=$((i+1))
+	vlan_count=$((vlan_count+1))
+done

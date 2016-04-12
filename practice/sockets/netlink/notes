@@ -1,0 +1,6 @@
+mode of communication between kernel and user space processes
+netlink family: represents a part of kernel dedicated to some specific function
+messages can be multipart, in which case all parts but the last one contain a flag
+	to indicate a multipart message
+
+sockaddr_ln describes a client socket in the user space

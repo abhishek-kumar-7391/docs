@@ -1,0 +1,6 @@
+ifeq ($(.DEFAULT_GOAL),)
+	$(warning nom default goal is set)
+endif
+
+all : 
+	@echo "do nothin makefile"

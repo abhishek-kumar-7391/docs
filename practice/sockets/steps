@@ -1,0 +1,7 @@
+#! /bin/bash
+
+touch NEWS AUTHOR ChangeLog README
+aclocal
+autoheader
+autoconf
+automake -a

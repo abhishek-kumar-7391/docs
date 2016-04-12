@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+
+int main(int argc, char* argv[])
+{
+	unsigned char arr[] = {0x01, 0x23, 0x45, 0x67};
+	unsigned int num1, num2;
+	int fd;
+	char new_line = '\n';
+	
+	fd = open("./file", O_CREAT|O_WRONLY|O_RDONLY);
+	if(fd<0)
+	{
+		perror("open");
+		exit(-1);
+	}
+
+	num1 = *(unsigned int*)arr;
+	write(fd, &num1, sizeof(num1));
+	
+	fprintf(stdout, "hex num1 = %x\n", num1);
+	fprintf(stdout, "num1 int = %u\n", num1);
+	fprintf(stdout, "first byte num1 = %u\n", num1 & 0x000000ff);
+	fprintf(stdout, "last byte num1  = %u\n", (num1 & 0xff000000)>>24);
+	fprintf(stdout, "\n\n");
+	
+	num2 = 0x01234567;
+	write(fd, &new_line, sizeof(char));
+	write(fd, &num2, sizeof(num2));
+	fprintf(stdout, "hex num2 = %x\n", num2);
+	fprintf(stdout, "num2 int = %u\n", num2);
+	fprintf(stdout, "first byte num2 = %u\n", num2 & 0x000000ff);
+	fprintf(stdout, "last byte num2  = %u\n", (num2 & 0xff000000)>>24);
+	
+
+
+
+	return 0;
+}

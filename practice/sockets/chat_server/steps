@@ -1,0 +1,17 @@
+#! /bin/bash
+
+touch NEWS AUTHORS ChangeLog README
+read v
+ls
+aclocal
+read v
+ls
+autoheader
+read v
+ls
+autoconf
+read v
+ls
+automake -a
+read v
+ls

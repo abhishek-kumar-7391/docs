@@ -1,0 +1,3 @@
+- required if you want the clients to be auto-configured
+- radvd listens to network solicitation messages and replies with network
+	advertisments

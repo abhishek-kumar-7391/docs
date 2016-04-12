@@ -1,0 +1,2 @@
+respawn : restart a process , if it is killed automatically for some reason.
+	  can use a cron_job for the same purpose.

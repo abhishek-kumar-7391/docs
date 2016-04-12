@@ -1,0 +1,6 @@
+checksum: in case if the checksum of an ip packet is tempered with, NIC hardware needs to be handled to ignore the checksum modifications
+or the packets will be dropped.
+
+routing table flags:
+	> G: tells that the packets for destination are routed through the mentioned gateway. If the 'G' flag is absent then the gateway
+	. column specifies the ip address of the outgoing interface.

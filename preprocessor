@@ -1,0 +1,9 @@
+#define print(some) fpritnf(stdout, #some);   
+	
+	use it to display string, when you pass the arguments in the following fashion
+		print(helloworld);
+
+
+#define print(some) fpritnf(stdout, some);   
+	use it to display string, when you pass the arguments in the following fashion
+		print("helloworld");

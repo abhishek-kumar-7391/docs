@@ -1,0 +1,4 @@
+#! /bin/bash
+
+permission=$1
+if [ ${permission} == "rw"]

@@ -1,0 +1,3 @@
+Reason for bad tcp packets:
+	1. poor connection
+	2. retransmissions

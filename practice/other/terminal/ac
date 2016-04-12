@@ -1,0 +1,6 @@
+screen -t map  1 ./map     #run the "map" command
+screen -t chat 2 ./chat    #run the "chat" command
+split
+select 1 #the map - defined above
+focus
+select 2 #the chat

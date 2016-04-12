@@ -1,0 +1,1 @@
+/**/skimlinksApplyHandlers({"country":"IN","sessid":"a21927eed828d796a0a14259e3b4edfc","guid":"e7a2aff339eae2c246c92ed7f00467aa","merchant_domains":[]});
