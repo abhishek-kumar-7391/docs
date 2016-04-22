@@ -1,0 +1,4 @@
+Simplest way to create a shared lib : 
+	gcc --shared -o lib.so OBJECT_FILES
+with shared lib in current dir : 
+	gcc progname -L. lib.so
