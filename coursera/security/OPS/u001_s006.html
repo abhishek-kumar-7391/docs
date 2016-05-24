@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>6 Integrity</title>
+    <link href="assets/main.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="sec006">
+      <h2>6 Integrity</h2>
+      <div class="section" id="sec006_001">
+        <h2>6.1 Encryption and integrity</h2>
+        <p>You should recall from Section 3.2 that integrity relates to assurance that there has been no unauthorised modification of
+          a message and that the version received is the same as the version sent.
+        </p>
+        <div class="box_style1" id="act010">
+          <div class="box_header">
+            <h3>Activity 10</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>Pause here for a while and consider whether encryption can be used as an effective assurance of the integrity of a message.</p>
+            </div>
+            <p class="nav_button"><a id="d0e1668" href="u001_s006_answ019.html">View answer - Activity 10</a></p>
+          </div>
+        </div>
+        <p>There are other reasons why encryption alone does not provide a completely workable solution. As you have already seen, the
+          encryption process carries overheads in terms of resources and for some applications it is preferable to send data in the
+          clear. Also some network management protocols separate the confidentiality and integrity functions, so encryption is not always
+          appropriate.
+        </p>
+      </div>
+      <div class="section" id="sec006_002">
+        <h2>6.2 Other ways of providing assurance of integrity</h2>
+        <p>Some other method of providing assurance of the integrity of a message is therefore needed – some kind of concise identity
+          of the original message that can be checked against the received message to reveal any possible discrepancies between the
+          two. This is the purpose of a <strong>message digest</strong>. It consists of a small, fixed-length block of data, also known as a <strong>hash value</strong>, which is a function of the original message. (The term ‘hash value’ can be used in other contexts.) The hash value is dependent
+          on all the original data (in other words, it will change even if only one bit of the data changes) and is calculated by applying
+          a mathematical function, known as a hash function, which converts a variable-length string to a fixed-length string. A simple
+          example is a function that XORs together each byte of an input string to produce a single output byte.
+        </p>
+        <p>A common use of a hash value is the storage of passwords on a computer system. If the passwords are stored in the clear, anyone
+          gaining unlawful access to the computer files could discover and use them. This can be avoided if a hash of the password is
+          stored instead. When a user enters a password at log-in the hash value is recalculated and compared with the stored value.
+          The security of this method relies on the hash function being computationally irreversible. In other words, it is easy to
+          compute a hash value for a given input string, but extremely difficult to deduce the input string from the hash value. Hash
+          functions with this characteristic are known as <strong>one-way hash functions</strong>.
+        </p>
+        <p>For a hash value to give an effective assurance about the integrity of data, it should also be computationally infeasible
+          to generate another message that hashes to the same value. Hash functions that provide this characteristic are said to be
+          <strong>collision-free</strong>. The example of the XOR function given earlier is not collision-free, since it would be simple to generate messages that
+          would produce an identical hash.
+        </p>
+        <p>The following very simple method gives an insight into how a one-way hash could be derived. (This example is not a practical
+          method of producing hash values but does serve to demonstrate their function.)
+        </p>
+        <ol class="list-decimal">
+          <li>
+            <p>Concatenate the message by removing all the spaces.</p>
+          </li>
+          <li>
+            <p>Arrange the message in blocks of five characters.</p>
+          </li>
+          <li>
+            <p>Pad the final block if it contains less than five characters. (For example, if the final block has only two characters it
+              could be padded by adding AAA.)
+            </p>
+          </li>
+          <li>
+            <p>Assign each block a numerical code from one of 26<sup>5</sup> possible values according to the arrangement of letters. (See the example in the box below.)
+            </p>
+          </li>
+          <li>
+            <p>Derive a value that is the modulo-26<sup>5</sup> sum of all the codes.
+            </p>
+          </li>
+        </ol>
+        <p>At the receiving end the hash value is recalculated using the same algorithm and is compared with the appended hash value
+          received with the message. Any alterations in the original message should be revealed by a different hash value.
+        </p>
+        <div class="box_style1" id="box003">
+          <div class="box_header">
+            <h3> <strong>Box 3</strong>: A method of block coding
+            </h3>
+          </div>
+          <div class="box_body">
+            <p>This is a worked example of a method of block coding the text VALUE</p>
+            <ol class="list-decimal">
+              <li>
+                <p>Code each letter according to its position in the alphabet (A=0, B=1, etc.), giving the number sequence 21, 0, 11, 20, 4.</p>
+              </li>
+              <li>
+                <p>Multiply each coded number by a power of 26 depending on its position in the sequence, giving: 21 × 26<sup>4</sup>, 0 × 26<sup>3</sup>, 11 × 26<sup>2</sup>, 20 × 26<sup>1</sup>, 4 × 26<sup>0</sup></p>
+              </li>
+              <li>
+                <p>Add together the resulting numbers: 6 596 496 + 0 + 7436 + 520 + 4 = 9 604 456</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <p>In practice, of course, message digest algorithms in common use are very much more complex than the method described above.
+          Two are briefly described in <a href="#tbl005">Table 5</a>.
+        </p>
+        <div class="table-container">
+          <p> Table 5 Examples of common message digest algorithms</p>
+          <table class="normal topbottomrules multi-col" id="tbl005">
+            <tbody>
+              <tr>
+                <td><strong>Algorithm</strong></td>
+                <td><strong>Description</strong></td>
+              </tr>
+              <tr>
+                <td>MD5</td>
+                <td>Takes any arbitrary length input string and produces a fixed 128-bit value. This is done by a method of blocking and padding
+                  and then performing four rounds of processing based on a combination of logical functions. Considered to be reasonably secure
+                  although potential weaknesses have been reported.
+                </td>
+              </tr>
+              <tr>
+                <td>SHA (secure hash algorithm)</td>
+                <td>Similar to MD5 but produces a 160-bit hash value so is more resistant to brute force attacks<sup>1</sup>.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="sourcereference"></p>
+        </div>
+        <p><sup>1</sup>A brute force attack on a hash value can be either an attempt to find another message that hashes to the same value or an
+          attempt to find two messages that hash to the same value.
+        </p>
+        <p>A <strong>message authentication code</strong> is similar to a one-way hash function and has the same properties, but the algorithm uses the additional ingredient of a
+          secret key, and therefore possession of the key to perform the check is necessary.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

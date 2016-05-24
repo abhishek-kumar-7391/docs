@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="uid">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <meta name="cover" content="cover-image" />
+    <dc:creator>The Open University</dc:creator>
+    <dc:title id="maintitle">Network security</dc:title>
+    <dc:publisher>The Open University</dc:publisher>
+    <dc:date opf:event="publication">2016</dc:date>
+    <dc:date opf:event="modification">2016-03-17T14:43:25Z</dc:date>
+    <dc:identifier id="uid">6FFED8FBB77F5552326A7655B25EF2A1</dc:identifier>
+    <dc:source>http://www.open.edu/openlearn/science-maths-technology/computing-and-ict/systems-computer/network-security/content-section-0</dc:source>
+    <dc:language>en-GB</dc:language>
+    <dc:format>text/xhtml+xml</dc:format>
+    <!--Built by AaAF version 2.15 [2015-12-02] [LIVE] on OMU-ALTF-LIVE at The Open University, 2016-03-17T14:43:25Z-->
+  </metadata>
+  <manifest>
+    <item id="ncx" href="book.ncx" media-type="application/x-dtbncx+xml"></item>
+    <item id="cover" href="cover.html" media-type="application/xhtml+xml"></item>
+    <item id="title" href="title.html" media-type="application/xhtml+xml"></item>
+    <item id="imprint" href="imprint.html" media-type="application/xhtml+xml"></item>
+    <item id="toc" href="toc.html" media-type="application/xhtml+xml"></item>
+    <item id="introduction" href="introduction.html" media-type="application/xhtml+xml"></item>
+    <item id="learningoutcomes" href="learningoutcomes.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s001" href="u001_s001.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s002" href="u001_s002.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s003" href="u001_s003.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s004" href="u001_s004.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s005" href="u001_s005.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s006" href="u001_s006.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s007" href="u001_s007.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s008" href="u001_s008.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s009" href="u001_s009.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s010" href="u001_s010.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s011" href="u001_s011.html" media-type="application/xhtml+xml"></item>
+    <item id="bm_ref" href="bm_ref.html" media-type="application/xhtml+xml"></item>
+    <item id="bm_ack" href="bm_ack.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s002_answ001" href="u001_s002_answ001.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s003_answ002" href="u001_s003_answ002.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s003_answ003" href="u001_s003_answ003.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s003_answ004" href="u001_s003_answ004.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s003_answ005" href="u001_s003_answ005.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s003_answ006" href="u001_s003_answ006.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s003_answ007" href="u001_s003_answ007.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s003_answ008" href="u001_s003_answ008.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s004_answ009" href="u001_s004_answ009.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s004_answ010" href="u001_s004_answ010.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s004_answ011" href="u001_s004_answ011.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s004_answ012" href="u001_s004_answ012.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s004_answ013" href="u001_s004_answ013.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s004_answ014" href="u001_s004_answ014.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s005_answ015" href="u001_s005_answ015.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s005_answ016" href="u001_s005_answ016.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s005_answ017" href="u001_s005_answ017.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s005_answ018" href="u001_s005_answ018.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s006_answ019" href="u001_s006_answ019.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s007_answ020" href="u001_s007_answ020.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s007_answ021" href="u001_s007_answ021.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s008_answ022" href="u001_s008_answ022.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s008_answ023" href="u001_s008_answ023.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s009_answ024" href="u001_s009_answ024.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s009_answ025" href="u001_s009_answ025.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s009_answ026" href="u001_s009_answ026.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s009_answ027" href="u001_s009_answ027.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s009_answ028" href="u001_s009_answ028.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s009_answ029" href="u001_s009_answ029.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s009_answ030" href="u001_s009_answ030.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s009_answ031" href="u001_s009_answ031.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s009_answ032" href="u001_s009_answ032.html" media-type="application/xhtml+xml"></item>
+    <item id="u001_s003_tran001" href="u001_s003_tran001.html" media-type="application/xhtml+xml"></item>
+    <item id="cover-image" href="assets/t823_1_cover_ebook.jpg" media-type="image/jpeg"></item>
+    <item id="asset1" href="assets/main.css" media-type="text/css"></item>
+    <item id="asset2" href="assets/ol_skeleton_keeponlearning_image.jpg" media-type="image/jpeg"></item>
+    <item id="asset3" href="assets/t823_1_001i.jpg" media-type="image/jpeg"></item>
+    <item id="asset4" href="assets/t823_1_002i.jpg" media-type="image/jpeg"></item>
+    <item id="asset5" href="assets/t823_1_003i.jpg" media-type="image/jpeg"></item>
+    <item id="asset6" href="assets/t823_1_004i.jpg" media-type="image/jpeg"></item>
+    <item id="asset7" href="assets/t823_1_005i.jpg" media-type="image/jpeg"></item>
+    <item id="asset8" href="assets/t823_1_006i.jpg" media-type="image/jpeg"></item>
+    <item id="asset9" href="assets/t823_1_007i.jpg" media-type="image/jpeg"></item>
+    <item id="asset10" href="assets/t823_1_008i.jpg" media-type="image/jpeg"></item>
+    <item id="asset11" href="assets/t823_1_009i.jpg" media-type="image/jpeg"></item>
+    <item id="asset12" href="assets/t823_1_010i.jpg" media-type="image/jpeg"></item>
+    <item id="asset13" href="assets/t823_1_011i.jpg" media-type="image/jpeg"></item>
+    <item id="asset14" href="assets/t823_1_012i.jpg" media-type="image/jpeg"></item>
+    <item id="asset15" href="assets/t823_1_013i.jpg" media-type="image/jpeg"></item>
+    <item id="asset16" href="assets/t823_1_014i.jpg" media-type="image/jpeg"></item>
+    <item id="asset17" href="assets/t823_1_015i.jpg" media-type="image/jpeg"></item>
+    <item id="asset18" href="assets/t823_1_016i.jpg" media-type="image/jpeg"></item>
+    <item id="asset19" href="assets/t823_1_017i.jpg" media-type="image/jpeg"></item>
+    <item id="asset20" href="assets/t823_1_018i.jpg" media-type="image/jpeg"></item>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="cover" linear="yes"></itemref>
+    <itemref idref="title" linear="yes"></itemref>
+    <itemref idref="imprint" linear="yes"></itemref>
+    <itemref idref="toc" linear="yes"></itemref>
+    <itemref idref="introduction" linear="yes"></itemref>
+    <itemref idref="learningoutcomes" linear="yes"></itemref>
+    <itemref idref="u001_s001" linear="yes"></itemref>
+    <itemref idref="u001_s002" linear="yes"></itemref>
+    <itemref idref="u001_s003" linear="yes"></itemref>
+    <itemref idref="u001_s004" linear="yes"></itemref>
+    <itemref idref="u001_s005" linear="yes"></itemref>
+    <itemref idref="u001_s006" linear="yes"></itemref>
+    <itemref idref="u001_s007" linear="yes"></itemref>
+    <itemref idref="u001_s008" linear="yes"></itemref>
+    <itemref idref="u001_s009" linear="yes"></itemref>
+    <itemref idref="u001_s010" linear="yes"></itemref>
+    <itemref idref="u001_s011" linear="yes"></itemref>
+    <itemref idref="bm_ref" linear="yes"></itemref>
+    <itemref idref="bm_ack" linear="yes"></itemref>
+    <itemref idref="u001_s002_answ001" linear="yes"></itemref>
+    <itemref idref="u001_s003_answ002" linear="yes"></itemref>
+    <itemref idref="u001_s003_answ003" linear="yes"></itemref>
+    <itemref idref="u001_s003_answ004" linear="yes"></itemref>
+    <itemref idref="u001_s003_answ005" linear="yes"></itemref>
+    <itemref idref="u001_s003_answ006" linear="yes"></itemref>
+    <itemref idref="u001_s003_answ007" linear="yes"></itemref>
+    <itemref idref="u001_s003_answ008" linear="yes"></itemref>
+    <itemref idref="u001_s004_answ009" linear="yes"></itemref>
+    <itemref idref="u001_s004_answ010" linear="yes"></itemref>
+    <itemref idref="u001_s004_answ011" linear="yes"></itemref>
+    <itemref idref="u001_s004_answ012" linear="yes"></itemref>
+    <itemref idref="u001_s004_answ013" linear="yes"></itemref>
+    <itemref idref="u001_s004_answ014" linear="yes"></itemref>
+    <itemref idref="u001_s005_answ015" linear="yes"></itemref>
+    <itemref idref="u001_s005_answ016" linear="yes"></itemref>
+    <itemref idref="u001_s005_answ017" linear="yes"></itemref>
+    <itemref idref="u001_s005_answ018" linear="yes"></itemref>
+    <itemref idref="u001_s006_answ019" linear="yes"></itemref>
+    <itemref idref="u001_s007_answ020" linear="yes"></itemref>
+    <itemref idref="u001_s007_answ021" linear="yes"></itemref>
+    <itemref idref="u001_s008_answ022" linear="yes"></itemref>
+    <itemref idref="u001_s008_answ023" linear="yes"></itemref>
+    <itemref idref="u001_s009_answ024" linear="yes"></itemref>
+    <itemref idref="u001_s009_answ025" linear="yes"></itemref>
+    <itemref idref="u001_s009_answ026" linear="yes"></itemref>
+    <itemref idref="u001_s009_answ027" linear="yes"></itemref>
+    <itemref idref="u001_s009_answ028" linear="yes"></itemref>
+    <itemref idref="u001_s009_answ029" linear="yes"></itemref>
+    <itemref idref="u001_s009_answ030" linear="yes"></itemref>
+    <itemref idref="u001_s009_answ031" linear="yes"></itemref>
+    <itemref idref="u001_s009_answ032" linear="yes"></itemref>
+    <itemref idref="u001_s003_tran001" linear="no"></itemref>
+  </spine>
+</package>

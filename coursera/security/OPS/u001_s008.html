@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>8 Authentication</title>
+    <link href="assets/main.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="sec008">
+      <h2>8 Authentication</h2>
+      <div class="section" id="sec008_001">
+        <h2>8.1 Overview of authentication methods</h2>
+        <p>Authentication is needed to provide some assurance about the source of a message: did it originate from the location it appears
+          to have originated from? One of the simplest authentication methods is the use of a shared secret such as a password. Assume
+          that Alice and Bob share a password. Alice may challenge Bob to provide the shared password and if he does so correctly and
+          Alice is confident that the password has not been compromised in any way, then she may be reassured that she is indeed communicating
+          with Bob. (The use of passwords is examined in more detail in <a href="u001_s009.html#sec009_002">Section 9.2</a>.)
+        </p>
+        <p>Using the following steps, public key encryption can be used to provide an alternative challenge–response protocol between
+          communicating entities who do not share a secret key:
+        </p>
+        <ol class="list-decimal">
+          <li>
+            <p>Alice challenges Bob by sending him some random number.</p>
+          </li>
+          <li>
+            <p>Bob encrypts the random number using his own private key and sends the result to Alice.</p>
+          </li>
+          <li>
+            <p>Alice decrypts the message using Bob's public key. If the result matches her original random value and if she has confidence
+              that the public key does indeed belong to Bob, then she may be assured that it is Bob who has sent the message to her.
+            </p>
+          </li>
+        </ol>
+        <p>In effect, when a message is encrypted with a private key, the key acts like the signature of the owner. As long as the key
+          has not been compromised in any way it will act as an assurance of the authenticity of the message. However, Bob would be
+          ill-advised to sign a document unless he was very sure about its contents. What if the value sent by Alice was not, after
+          all, some random number but instead was an encrypted message giving instructions to Bob's bank to transfer funds into Alice's
+          account? A better way for Bob to provide authentication when sending messages to Alice would be for him to create a digest
+          of his message (message digests were discussed in <a href="u001_s006.html#sec006_002">Section 6.2</a>) encrypted with his private key and to append this to the message he sends to Alice. On receipt Alice could create a new
+          digest using an identical algorithm and compare this with the decrypted digest sent by Bob. If the two match and she is confident
+          that Bob's private key has not been compromised in any way she may feel reasonably confident that the message did originate
+          with Bob. Such an encrypted message digest is known as a <strong>digital signature</strong>.
+        </p>
+      </div>
+      <div class="section" id="sec008_002">
+        <h2>8.2 Certification authorities and digital certificates</h2>
+        <p>There are snags to this procedure, however: for example, Charlie could generate a key pair for himself and publish the public
+          key using Bob's name. Some additional assurance is required that irrevocably binds together the true identity of a person
+          with a public key. This assurance can be provided by a trusted third party, known as a <strong>certification authority</strong>, which is able to vouch for Bob. Certification authorities can be independent organisations, system administrators, or companies
+          (such as Verisign) that specialise in validating the identity of an entity and issue a digital certificate that binds the
+          identity with a public key. The certification authority knows only the public key of the entity and not the private key, which
+          should of course be kept secret at all times. The entity may not be a person – it could also, for example, be a computer,
+          a website, or a network resource such as a router. Once the digital certificate has been issued, the entity can append it
+          to messages it sends in order to provide assurance about its identity.
+        </p>
+        <div class="box_style1" id="act012">
+          <div class="box_header">
+            <h3>Activity 12</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>Can you think of a problem that might arise with this arrangement?</p>
+            </div>
+            <p class="nav_button"><a id="d0e1900" href="u001_s008_answ022.html">View answer - Activity 12</a></p>
+          </div>
+        </div>
+        <p>So a digital certificate itself needs some form of authentication to provide assurance that it is valid.</p>
+        <div class="box_style1" id="act013">
+          <div class="box_header">
+            <h3>Activity 13</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>How could a certification authority provide assurance about the validity of a digital certificate?</p>
+            </div>
+            <p class="nav_button"><a id="d0e1911" href="u001_s008_answ023.html">View answer - Activity 13</a></p>
+          </div>
+        </div>
+        <p>Typically, a digital certificate includes the information illustrated in <a href="#fig012">Figure 12</a>. It may also include the level of trust that the certification authority is prepared to recommend. The emerging standard
+          for digital certificates is ITU-T X.509.
+        </p>
+        <div class="figure-container" id="fig012">
+          <div><span><img src="assets/t823_1_012i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 12 Format of a typical digital certificate</p>
+        </div>
+        <p>A user will need to obtain the certification authority's public key in order to validate its signature. In turn, the binding
+          of the certification authority's identity to a public key will itself need to be the subject of validity assurances, and thus
+          the system of authentication depends on an extended structure and often relies on a chain of certificates.
+        </p>
+        <p>Certification authorities form part of what is known as a <strong>public key infrastructure</strong> – a combination of services and encryption techniques that together are used to protect the security of data over networks.
+          At the time of writing, the definition of a public key infrastructure is rather loose, but it is generally accepted that it
+          will include:
+        </p>
+        <ul>
+          <li>
+            <p>a <strong>registration authority</strong>, which checks and verifies the credentials of a user before a digital certificate can be issued
+            </p>
+          </li>
+          <li>
+            <p>a certification authority that issues and verifies digital certificates</p>
+          </li>
+          <li>
+            <p>directory services for the publishing of public keys and certificates</p>
+          </li>
+          <li>
+            <p>certificate management and key management services.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

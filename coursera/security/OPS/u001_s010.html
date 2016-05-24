@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Conclusion</title>
+    <link href="assets/main.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="sec010">
+      <h2>Conclusion</h2>
+      <div class="section" id="sec010_001">
+        <h2>10.1 Summary of Sections 1–5</h2>
+        <p>There are many terms and abbreviations relating to this topic, and it is important to understand them.</p>
+        <p>Looking at the background to network security can help to put its more technical aspects in context.</p>
+        <p>Communication networks and the data they carry are vulnerable to a range of attacks. These can be categorised as either passive
+          or active attacks. In a passive attack, communication across a network is observed but data within messages is not interfered
+          with and messages may not even be readable by the attacker. Traffic analysis is strongly associated with passive attacks,
+          but may also be a legitimate process for effective network management. An active attack typically involves, for example, the
+          modification of messages or their replay, or access to data and networks through the assumption of a false identity, leading
+          to either the misuse of data or disruption of network services.
+        </p>
+        <p>There are many opportunities for an attacker to gain physical access to networks and these need to be resisted by both electronic
+          and mechanical means. The sharing of networks through, for example, the internet, provides opportunities for attack without
+          the need for the attacker to be physically close to the target networks. Wireless LAN technology presents further opportunities
+          for illicit network access.
+        </p>
+        <p>Encryption is one of the fundamental building blocks of network security. Encryption transforms plaintext into ciphertext,
+          while decryption reverses the process. Encryption systems are based on one of two basic methods. The first is a symmetric
+          key system in which a single secret key is shared between the two communicating entities. The second is an asymmetric system
+          which uses two mathematically related keys known as the public key and the private key. One key is used for encryption and
+          the other for decryption. Asymmetric key systems place higher demands on processing resources than symmetric key systems and
+          tend to be slower, but they are more scalable and they do not rely on any prior secret key exchange. Hybrid systems are a
+          combination of symmetric and asymmetric key systems.
+        </p>
+        <p>The implementation of encryption systems can be related to network protocol layers. Encryption can be applied in link layer
+          or end-to-end mode. In link layer encryption, the encryption and decryption processes take place at each node along a path,
+          but this can be expensive and slow. End-to-end encryption involves applying encryption at higher layers in the protocol stack.
+          Network layer encryption and application layer encryption are examples. Security vulnerabilities arise when protocol header
+          information is exposed during message transmission or at nodes where data is processed in unencrypted form.
+        </p>
+      </div>
+      <div class="section" id="sec010_002">
+        <h2>10.2 Summary of Sections 6–9</h2>
+        <p>Integrity relates to assurances that a message has not been tampered with in any unauthorised way. A method of providing this
+          assurance is to create a message digest, which gives a concise identity of the original message, and append it to the message.
+          The message digest of the received message can then be calculated and checked for discrepancies against the digest sent. A
+          message digest takes the form of a small fixed-length block of data known as a hash value. A hash value created by a one-way
+          hash function is relatively easy to compute but difficult to reverse.
+        </p>
+        <p>Time stamps, sequence numbers and nonces are used to provide assurances about the freshness of a message and help to prevent
+          replay attacks.
+        </p>
+        <p>Message authentication can be provided by including a digest of the message encrypted by the sender's private key. The encrypted
+          digest is known as a digital signature. The recipient decrypts the digest using the sender's public key, computes a new digest
+          of the received message and compares the results. A certification authority is a trusted third party that is able to validate
+          public keys by issuing a digital certificate that binds the identity of the user with the key.
+        </p>
+        <p>The most common ways of controlling access to communication networks are restricting mechanical access and implementing password
+          schemes and firewalls. Strong passwords can be generated provided that they contain no recognisable structure. Such passwords
+          should be capable of withstanding, at least for a useful period of time, brute force and other computer-assisted discovery
+          techniques. However, such passwords are difficult to remember and human factors become critical.
+        </p>
+        <p>Firewalls are implemented to control traffic at the borders of protected networks. Three approaches are based on packet-filtering
+          rules (packet-filtering router), application type and content (application level gateway) and validity of transport connection
+          (circuit level gateway). These approaches in varying combinations can provide firewalls appropriate to the level of perceived
+          threat, but sufficiently non-restricting to legitimate users of the protected networks.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

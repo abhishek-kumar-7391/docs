@@ -1,0 +1,59 @@
+Role of Cyber Security :
+Cyber security is important for an organization to protect its assets which can be accessed over a computer network.
+By assets I mean anything and everything that's important for the organization, whether its some data kept on a server
+, email transactions, employee records, etc.
+
+Some of the ways in which an organizations assets can be harmed :-
+1. Important piece of information can be leaked to their competitors which might cause a loss in terms of buisness value.
+2. The data can be removed or erased and the organization will have to reproduce all of it, in case if they didnt have any backup.
+
+Cyber security can help in protecting an organization's assets by preventing unauthorized access to them.
+For example :
+	We can consider an organization's employee database as one of its critical assets. Now if someone with
+	criminal intent can get their hands on to that database then they can use the details about employees 
+	like their phone numbers, house address, etc. , to their(criminal's) benefit, causing problems for the employees, 
+	or might just erase it which obviously will cause problems for the organization since they will no longer
+	have their employee records, especially the HR dept. :-) (... joking ..)
+	Thus Cyber Security can help the organization by not allowing unauthorized people to access critical
+	information or any information at all for that matter.
+
+Technology Principles of Cyber Security:
+Confidentialiy, Integrity and Availability are the principles of security which ensure that information is exchanged between 
+intended users without leaking it to a third person (confidentiality) or without causing any damage/manipulations(integrity) 
+to the actual information.
+For instance, chat messages between two people are something that requires confidentiality and integrity.
+
+Access contol:
+Access control is used to allow/deny permissions to people, for accessing the resources or providing 
+access to only a limited part. Its can also be used to keep track of the activities performed by 
+different users on the network.
+
+Access contol has three different stages of control : Authentication, Authorization, Auditing.
+
+Authentication: 
+Authentication is required to prove one's indentity.
+For example :
+When you knock on someone's door, they usually ask "Who's that ? (politely)" ,as a response to which you indetify 
+yourself by telling your name or any other indications that confirm your indentity.
+
+Similarly, authentication in Cyber Sec. requires a user to provide a set of credentials, generally a combination of username and password.
+In broader terms authentication is one way for you to identify yourself to the authority.
+Different types of authentications are :
+1. Who knows (passwords...)
+2. Who has (2 factor authentication, eg: one time passwords(OTP))
+3. Who is (Biometric scans)
+
+
+Authorization: 
+Once users are inside the network, they are or not allowed to do anything, depending on what authorization they have.
+For instance: 
+In an organization an employee's access card may only have authorization for opening normal doors and not 
+the ones where access is restricted like the server rooms.
+
+Auditing:
+Auditing is about keeping track of one's activity. CCTV surveillances are a good analogy of auditing.
+With reference to a computer network it can mean : 
+1. To keep record of commands executed by a user.
+2. To record services used by the user.
+
+And all the way it can go as deep as recording what keys you pressed ever since you got into the system.

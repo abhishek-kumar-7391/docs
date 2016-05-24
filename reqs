@@ -1,0 +1,9 @@
+modprobe ixgbe
+#modprobe igb
+modprobe e1000e
+modprobe rte_kni
+modprobe igb_uio
+modprobe iptable_nat
+sysctl -p
+/bin/dpdk_nic_bind.py --bind=igb_uio eth0
+

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>7 Freshness</title>
+    <link href="assets/main.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="sec007">
+      <h2>7 Freshness</h2>
+      <div class="section" id="sec007_001">
+        <h2>7.1 Introduction</h2>
+        <p>A message replay attack was introduced briefly in <a href="u001_s003.html#sec003_004">Section 3.4</a>. In this attack a message, or a portion of a message, is recorded and replayed at some later date. For example, an instruction
+          to a bank to transfer a sum of money from account A to account B could be recorded and replayed some time later to fool the
+          bank into making a second payment to account B. The incorporation of a freshness indicator in the message is a means of thwarting
+          attacks of this kind. In this section I introduce three methods for indicating freshness: time stamps, sequence numbers and
+          nonces.
+        </p>
+      </div>
+      <div class="section" id="sec007_002">
+        <h2>7.2 Time stamps</h2>
+        <p>A digital <strong>time stamp</strong> is analogous to a conventional postmark on an envelope: it provides some check of when a message was sent. Returning to the
+          example of Alice and Bob, Alice could add the time and date to her communication to Bob. If she encrypts this with her own
+          private key, or with a key that is known only to Alice and Bob, then Bob may feel reassured that Alice's message is not an
+          old one that has been recorded and replayed.
+        </p>
+        <div class="box_style1" id="act011">
+          <div class="box_header">
+            <h3>Activity 11</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>Look back to <a href="u001_s003.html#sec003_004">Section 3.4</a>, which introduced some types of active attack. If the encrypted message and the encrypted time stamp were sent together,
+                could Bob be truly sure of the freshness of the message?
+              </p>
+            </div>
+            <p class="nav_button"><a id="d0e1819" href="u001_s007_answ020.html">View answer - Activity 11</a></p>
+          </div>
+        </div>
+        <p>To prevent this kind of message replay attack, the message and the time stamp need to be bound together in some way. One method
+          of doing this is to encrypt them together. Only those in possession of the decryption key can then separate the two elements.
+        </p>
+      </div>
+      <div class="section" id="sec007_003">
+        <h2>7.3 Sequence numbers</h2>
+        <p><strong>Sequence numbers</strong> are an alternative way of indicating freshness. If Alice is sending a stream of messages to Bob she can bind each one to
+          a sequential serial number, and encryption will prevent an eavesdropper from altering any sequence number. If Bob is suspicious
+          he can check that the numbers in Alice's messages are incremented sequentially. It would be a straightforward matter for him
+          to spot a replayed message since the sequence order would be incorrect and its number would duplicate that of an earlier message.
+        </p>
+        <div class="box_style1" id="saq010">
+          <div class="box_header">
+            <h3>SAQ 10</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>In a connectionless packet-switched network, would sequence numbers provide effective freshness indicators?</p>
+            </div>
+            <p class="nav_button"><a id="d0e1837" href="u001_s007_answ021.html">View answer - SAQ 10</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="sec007_004">
+        <h2>7.4 Nonces</h2>
+        <p>This third method of freshness indication uses an unpredictable value in a challenge–response sequence. The sequence of events
+          is illustrated in <a href="#fig011">Figure 11</a>. Bob wants to communicate with Alice but she needs reassurance that his message is not an old one that is simply being replayed.
+          She generates some random number, which she encrypts and sends to Bob. He then binds the decrypted version of the random number
+          to his message to Alice. On receipt she checks that the returned number is indeed the one she recently issued and sent to
+          Bob. This number, which is used only once by Alice, is called a <strong>nonce</strong> (derived from ‘number used once’). The term ‘nonce’ is also often used in a wider sense to indicate any freshness indicator.
+        </p>
+        <div class="figure-container" id="fig011">
+          <div><span><img src="assets/t823_1_011i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 11 Using a nonce as a freshness indicator</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

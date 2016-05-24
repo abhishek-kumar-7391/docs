@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>4 Principles of encryption</title>
+    <link href="assets/main.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="sec004">
+      <h2>4 Principles of encryption</h2>
+      <div class="section" id="sec004_001">
+        <h2>4.1 An introduction to encryption and cryptography</h2>
+        <p>Section 3 has introduced you to the main threats to network security. Before I begin to examine the countermeasures to these
+          threats I want to introduce briefly one of the fundamental building blocks of all network security. This is <strong>encryption</strong> – a process that transforms information (the <strong>plaintext</strong>) into a seemingly unintelligible form (the <strong>ciphertext</strong>) using a mathematical algorithm and some secret information (the encryption <strong>key</strong>). The process of <strong>decryption</strong> undoes this transformation using a mathematical algorithm, in conjunction with some secret value (the decryption key) that
+          reverses the effects of the encryption algorithm. An encryption algorithm and all its possible keys, plaintexts and ciphertexts
+          is known as a <strong>cryptosystem</strong> or cryptographic system. <a href="#fig004">Figure 4</a> illustrates the process.
+        </p>
+        <div class="figure-container" id="fig004">
+          <div><span><img src="assets/t823_1_004i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 4 Encryption and decryption</p>
+        </div>
+        <p><strong>Cryptography</strong> is the general name given to the art and science of keeping messages secret. It is not the purpose here to examine in detail
+          any of the mathematical algorithms that are used in the cryptographic process, but instead to provide a general overview of
+          the process and its uses.
+        </p>
+        <p>Modern encryption systems use mathematical algorithms that are well known and have been exposed to public testing, relying
+          for security on the keys used. For example, a well-known and very simple algorithm is the <strong>Caesar cipher</strong>, which encrypts each letter of the alphabet by shifting it forward three places. Thus A becomes D, B becomes E, C becomes
+          F and so on. (A cipher that uses an alphabetic shift for any number of places is also commonly referred to as a Caesar cipher,
+          although this isn't strictly correct since the Caesar cipher is technically one in which each character is replaced by one
+          three places to the right.) I could describe this mathematically as <em>p</em> + 3 = c, where <em>p</em> is the plaintext and <em>c</em> the ciphertext. For a more general equation I could write <em>p + x = c</em> where <em>x</em> could take any integer value up to 25. Selecting different values for <em>x</em> would obviously produce different values for c, although the basic algorithm of a forward shift is unchanged. Thus, in this
+          example the value <em>x</em> is the key. (The Caesar cipher is of course too simple to be used for practical security systems.)
+        </p>
+        <p>There are two main requirements for cryptography:</p>
+        <ol class="list-decimal">
+          <li>
+            <p>It should be computationally infeasible to derive the plaintext from the ciphertext without knowledge of the decryption key.</p>
+          </li>
+          <li>
+            <p>It should be computationally infeasible to derive the ciphertext from the plaintext without knowledge of the encryption key.</p>
+          </li>
+        </ol>
+        <p>Both these conditions should be satisfied even when the encryption and decryption algorithms themselves are known.</p>
+        <p>The reason for the first condition is obvious, but probably not the second, so I shall briefly explain. In <a href="u001_s003.html#sec003_001">Section 3</a>, the need to confirm authenticity was introduced. This is often also a requirement for information that is sent ‘in the clear’,
+          that is, not encrypted. One method of authentication is for the sender and recipient to share a secret key. The sender uses
+          the key to encrypt a copy of the message, or a portion of it, which is included with the data transfer and, on receipt, the
+          recipient uses the key to decrypt the encrypted data. If the result matches the plaintext message, this provides a reasonable
+          assurance that it was sent by the other key owner, and thus a check on its authenticity. (You will learn more about authentication
+          in <a href="u001_s008.html#sec008_001">Section 8</a>.) Of course, this assumes that the key has not been compromised in any way.
+        </p>
+        <p>Modern encryption systems are derived from one of two basic systems: symmetric key (sometimes called shared key) systems,
+          and asymmetric key (often called public key) systems.
+        </p>
+      </div>
+      <div class="section" id="sec004_002">
+        <h2>4.2 An overview of symmetric key systems</h2>
+        <p>We can think of <strong>symmetric key systems</strong> as sharing a single secret key between the two communicating entities – this key is used for both encryption and decryption.
+          (In practice, the encryption and decryption keys are often different but it is relatively straightforward to calculate one
+          key from the other.) It is common to refer to these two entities as Alice and Bob because this simplifies the descriptions
+          of the transactions, but you should be aware that these entities are just as likely to be software applications or hardware
+          devices as individuals.
+        </p>
+        <p>Symmetric key systems rely on using some secure method whereby Alice and Bob can first agree on a secret key that is known
+          only to them. When Alice wants to send a private message to some other entity, say Charlie, another secret key must first
+          be shared. If Bob then wishes to communicate privately with Charlie himself, he and Charlie require a separate secret key
+          to share. <a href="#fig005">Figure 5</a> is a graphical representation of the keys Alice, Bob and Charlie would each need if they were to send private messages to
+          each other. As you can see from this, for a group of three separate entities to send each other private messages, three separate
+          shared keys are required.
+        </p>
+        <div class="figure-container" id="fig005">
+          <div><span><img src="assets/t823_1_005i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 5 Keys needed by Alice, Bob and Charlie for privately communicating with each other</p>
+        </div>
+        <div class="box_style1" id="saq004">
+          <div class="box_header">
+            <h3>SAQ 4</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>Derive a formula for the number of shared keys needed in a system of <em>n</em> communicating entities.
+              </p>
+            </div>
+            <p class="nav_button"><a id="d0e1117" href="u001_s004_answ009.html">View answer - SAQ 4</a></p>
+          </div>
+        </div>
+        <div class="box_style1" id="saq005">
+          <div class="box_header">
+            <h3>SAQ 5</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>How many shared keys are required for a company of 50 employees who all need to communicate securely with each other? How
+                many shared keys would be needed if the company doubles in size?
+              </p>
+            </div>
+            <p class="nav_button"><a id="d0e1160" href="u001_s004_answ010.html">View answer - SAQ 5</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="sec004_003">
+        <h2>4.3 The components of a symmetric key system</h2>
+        <p>I shall now explain the components of a symmetric key system in more detail.</p>
+        <p>A <strong>block cipher</strong> operates on groups of bits – typically groups of 64. If the final block of the plaintext message is shorter than 64 bits,
+          it is padded with some regular pattern of 1s and 0s to make a complete block. Block ciphers encrypt each block independently,
+          so the plaintext does not have to be processed in a sequential manner. This means that as well as allowing parallel processing
+          for faster throughput, a block cipher also enables specific portions of the message (e.g. specific records in a database)
+          to be extracted and manipulated. A block of plaintext will always encrypt to the same block of ciphertext provided that the
+          same algorithm and key are used.
+        </p>
+        <p>A <strong>stream cipher</strong> generally operates on one bit of plaintext at a time, although some stream ciphers operate on bytes. A component called a
+          keystream generator generates a sequence of bits, usually known as a <strong>keystream</strong>. In the simplest form of stream cipher, a modulo-2 adder (exclusive-OR or XOR gate) combines each bit in the plaintext with
+          each bit in the keystream to produce the ciphertext. At the receiving end, another modulo-2 adder combines the ciphertext
+          with the keystream to recover the plaintext. This is illustrated in <a href="#fig006">Figure 6</a>. The encryption of a unit of plain text is dependent on its position in the data stream, so identical units of plaintext
+          will not always encrypt to identical units of ciphertext when using the same algorithm and key.
+        </p>
+        <div class="figure-container" id="fig006">
+          <div><span><img src="assets/t823_1_006i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 6 Encryption and decryption using a modulo-2 adder</p>
+        </div>
+        <p>Stream ciphers can be classified as either synchronous or self-synchronising. In a synchronous stream cipher, depicted in
+          <a href="#fig007">Figure 7</a>, the keystream output is a function of a key, and is generated independently of the plaintext and the ciphertext. A single
+          bit error in the ciphertext will result in only a single bit error in the decrypted plaintext – a useful property when the
+          transmission error rate is high.
+        </p>
+        <div class="figure-container" id="fig007">
+          <div><span><img src="assets/t823_1_007i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 7 Synchronous stream cipher (Source: based on Schneier, 1996, Figure 9.6)</p>
+        </div>
+        <p>In a self-synchronising cipher, depicted in <a href="#fig008">Figure 8</a>, the keystream is a function of the key and several bits of the cipher output. Because the keystream outputs depend on the
+          previous <em>n</em> bits of the plaintext or the ciphertext, the encryption and decryption keystream generators are automatically synchronised
+          after <em>n</em> bits. However, a single bit error in the ciphertext results in an error burst with a length dependent on the number of cipher
+          output bits used to compute the keystream.
+        </p>
+        <div class="figure-container" id="fig008">
+          <div><span><img src="assets/t823_1_008i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 8 Self-synchronising stream cipher (Source: based on Schneier, 1996, Figure 9.8)</p>
+        </div>
+        <p>A selection of some symmetric key systems used in popular software products is given in <a href="#tbl002">Table 2</a>.
+        </p>
+        <div class="table-container">
+          <p> Table 2 Examples of commercial symmetric key systems</p>
+          <table class="normal topbottomrules multi-col" id="tbl002">
+            <tbody>
+              <tr>
+                <td><strong>Algorithm</strong></td>
+                <td><strong>Description</strong></td>
+              </tr>
+              <tr>
+                <td>DES (Data Encryption Standard)</td>
+                <td>A block cipher with a 56-bit key. Adopted in 1977 by the US National Security Agency (NSA) as the US Federal standard, it
+                  has been one of the most widely used encryption algorithms but, as computers have become more powerful, it is now considered
+                  to have become too weak.
+                </td>
+              </tr>
+              <tr>
+                <td>Triple-DES (or 3DES)</td>
+                <td>A variant of DES developed to increase its security. It has several forms; each operates on a block three times using the
+                  DES algorithm, thus effectively increasing the key length. Some variants can use three different keys, the same key three
+                  times, or use an encryption–decryption–encryption mode.
+                </td>
+              </tr>
+              <tr>
+                <td>IDEA(International Data Encryption Algorithm)</td>
+                <td>A block cipher with a 128-bit key published in 1990. It encrypts data faster than DES and is considered to be a more secure
+                  algorithm.
+                </td>
+              </tr>
+              <tr>
+                <td>Blowfish</td>
+                <td>A compact and simple block cipher with a variable-length key of up to 448 bits.</td>
+              </tr>
+              <tr>
+                <td>RC2 (Rivest cipher no. 2)</td>
+                <td>A block cipher with a variable-length key of up to 2048 bits. The details of the algorithm used have not been officially published.</td>
+              </tr>
+              <tr>
+                <td>RC4 (Rivest cipher no. 4)</td>
+                <td>A stream cipher with a variable-length key of up to 2048 bits.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="sourcereference"></p>
+        </div>
+        <p>Often the key length for RC2 and RC4 is limited to 40 bits because of the US export approval process. A shorter key reduces
+          the strength of an encryption algorithm.
+        </p>
+      </div>
+      <div class="section" id="sec004_004">
+        <h2>4.4 Asymmetric key systems</h2>
+        <p><strong>Asymmetric</strong> or <strong>public key systems</strong> are based on encryption techniques whereby data that has been encrypted by one key can be decrypted by a different, seemingly
+          unrelated, key. One of the keys is known as the <strong>public key</strong> and the other is known as the <strong>private key</strong>. The keys are, in fact, related to each other mathematically but this relationship is complex, so that it is computationally
+          infeasible to calculate one key from the other. Thus, anyone possessing only the public key is unable to derive the private
+          key. They are able to encrypt messages that can be decrypted with the private key, but are unable to decrypt any messages
+          already encrypted with the public key.
+        </p>
+        <p>I shall not explain the mathematical techniques used in asymmetric key systems, as you do not need to understand the mathematics
+          in order to appreciate the important features of such systems.
+        </p>
+        <p>Each communicating entity will have its own key pair; the private key will be kept secret but the public key will be made
+          freely available. For example, Bob, the owner of a key pair, could send a copy of his public key to everyone he knows, he
+          could enter it into a public database, or he could respond to individual requests from entities wishing to communicate by
+          sending his public key to them. But he would keep his private key secret. For Alice to send a private message to Bob, she
+          first encrypts it using Bob's easily accessible public key. On receipt, Bob decrypts the ciphertext with his secret private
+          key and recovers the original message. No one other than Bob can decrypt the ciphertext because only Bob has the private key
+          and it is computationally infeasible to derive the private key from the public key. Thus, the message can be sent secretly
+          from Alice to Bob without the need for the prior exchange of a secret key.
+        </p>
+        <p>Using asymmetric key systems with <em>n</em> communicating entities, the number of key pairs required is <em>n</em>. Compare this with the number of shared keys required for symmetric key systems (see SAQs 4 and 5) where the number of keys
+          is related to the square of the number of communicating entities. Asymmetric key systems are therefore more scalable.
+        </p>
+        <p>Public key algorithms can allow either the public key or the private key to be used for encryption with the remaining key
+          used for decryption. This allows these particular public key algorithms to be used for authentication, as you will see later.
+        </p>
+        <p>Public key algorithms place higher demands on processing resources than symmetric key algorithms and so tend to be slower.
+          Public key encryption is therefore often used just to exchange a temporary key for a symmetric encryption algorithm. This
+          is discussed further in Section 4.6.
+        </p>
+        <p>As with symmetric key systems, there are many public key algorithms available for use, although most of them are block ciphers.
+          Two used in popular commercial software products are listed in <a href="#tbl003">Table 3</a>.
+        </p>
+        <div class="table-container">
+          <p> Table 3 Examples of commercial asymmetric key systems</p>
+          <table class="normal topbottomrules multi-col" id="tbl003">
+            <tbody>
+              <tr>
+                <td><strong>Algorithm</strong></td>
+                <td><strong>Description</strong></td>
+              </tr>
+              <tr>
+                <td>RSA (named after its creators–Rivest, Shamir and Adleman)</td>
+                <td>A block cipher first published in 1978 and used for both encryption and authentication. Its security is based on the problem
+                  of factoring large integers, so any advances in the mathematical methods of achieving this will affect the algorithm's vulnerability.
+                </td>
+              </tr>
+              <tr>
+                <td>DSS (Digital Signature Standard<sup>1</sup>)
+                </td>
+                <td>Developed by the US National Security Agency (NSA). Can be used only for digital signatures and not for encryption or key
+                  distribution.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="sourcereference"></p>
+        </div>
+        <p>Digital signatures are explained in Section 8.</p>
+        <div class="box_style1" id="saq006">
+          <div class="box_header">
+            <h3>SAQ 6</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>Construct a table to compare the features of symmetric and asymmetric key systems.</p>
+            </div>
+            <p class="nav_button"><a id="d0e1333" href="u001_s004_answ011.html">View answer - SAQ 6</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="sec004_005">
+        <h2>4.5 Vulnerability to attack</h2>
+        <p>All the symmetric and public key algorithms listed in <a href="#tbl002">Table 2</a> and <a href="#tbl003"> Table 3</a>share the fundamental property that their secrecy lies in the key and not in the algorithm. (This is generally known as Kerchoff's
+          principle after the Dutchman who first proposed it in the nineteenth century.) This means that the security of any system
+          using encryption should not be compromised by knowledge of the algorithm used. In fact, the use of a well-known and well-tested
+          algorithm is preferred, since such methods have been subjected to intense scrutiny by practitioners in the field. If practitioners
+          with detailed knowledge of an algorithm have not found messages encrypted with it vulnerable to attack and have been unable
+          to break it, then it is safe to assume that others, without that knowledge, will also be unable to do so. However, the strength
+          of a cryptographic algorithm is difficult if not impossible to prove, as it can only be shown that the algorithm has resisted
+          specific known attacks. (An attack in this context is an attempt to discover the plaintext of an encrypted message without
+          knowledge of the decryption key.) New and more sophisticated mathematical tools may emerge that substantially weaken algorithms
+          previously considered to be immune from attack.
+        </p>
+        <p><strong>Cryptanalysis</strong> is the science of breaking a cipher without knowledge of the key (and often the algorithm) used. Its goal is either to recover
+          the plaintext of the message or to deduce the decryption key so that other messages encrypted with the same key can be decrypted.
+        </p>
+        <p>One of the more obvious attacks is to try every possible key (i.e. the finite set of possible keys, known as the <strong>keyspace</strong>) until the result yields some intelligible data. This kind of attack is known as a <strong>brute force attack</strong>. Clearly, the greater the keyspace, the greater the immunity to a brute force attack.
+        </p>
+        <div class="box_style1" id="saq007">
+          <div class="box_header">
+            <h3>SAQ 7</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>Assuming you could process 10<sup>12</sup> key attempts per second, calculate how long it would take to search the keyspace of a 56-bit key. Compare this with the time
+                needed to search the keyspace of a 128-bit key.
+              </p>
+            </div>
+            <p class="nav_button"><a id="d0e1405" href="u001_s004_answ012.html">View answer - SAQ 7</a></p>
+          </div>
+        </div>
+        <p>In practice it is unlikely that an attacker would need to try every possible key before finding the correct one. The correct
+          key could be found to a 50 per cent probability by searching only half of the keyspace. Even allowing for this, the time taken
+          to break a 128-bit key is still impossibly long.
+        </p>
+        <p>From the answer to SAQ 7 you may conclude that all that is needed for true data security is to apply an encryption system
+          with an appropriate length key. Unfortunately, key length is only one of the factors that determine the effectiveness of a
+          cipher. Cryptanalysts have a variety of tools, which they select according to the amount of information they have about a
+          cryptosystem. In each of the cases below, a knowledge of the encryption algorithm but not the key is assumed:
+        </p>
+        <ul>
+          <li>
+            <p><strong>Ciphertext only.</strong> The attacker has only a sample of ciphertext. The speed and success of such an attack increases as the size of the ciphertext
+              sample increases, provided that each portion of the sample has been encrypted with the same algorithm and key.
+            </p>
+          </li>
+          <li>
+            <p><strong>Known plaintext.</strong> The attacker has a sample of plaintext and a corresponding sample of ciphertext. The purpose of this attack is to deduce
+              the encryption key so that it can be used to decrypt other portions of ciphertext encrypted with the same algorithm and key.
+            </p>
+          </li>
+          <li>
+            <p><strong>Chosen text.</strong> The attacker usually has a sample of chosen plaintext and a corresponding sample of ciphertext. This attack is more effective
+              than known plaintext attacks since the attacker can select particular blocks of plaintext that can yield more information
+              about the key. The term may also refer to cases where the attacker has a stream of chosen ciphertext and a corresponding stream
+              of plaintext.
+            </p>
+          </li>
+        </ul>
+        <div class="box_style1" id="act006">
+          <div class="box_header">
+            <h3>Activity 6</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>From the list above how would you classify a brute force attack?</p>
+            </div>
+            <p class="nav_button"><a id="d0e1464" href="u001_s004_answ013.html">View answer - Activity 6</a></p>
+          </div>
+        </div>
+        <p>A ciphertext-only attack is one of the most difficult to mount successfully (and therefore the easiest to defend against)
+          because the attacker possesses such limited information. In some cases even the encryption algorithm is also unknown. However,
+          the attacker may still be able to use statistical analysis to reveal patterns in the ciphertext, which can be used to identify
+          naturally occurring language patterns in the corresponding plaintext. This method relies on exploiting the relative frequencies
+          of letters. In the English language, for example, E is the most frequently occurring letter with a probability of about 0.12.
+          This is followed by the letter T (probability 0.06) then A, O, I, N, S and R. Common letter sequences in natural language
+          (e.g. TH, HE, IN, ER and THE, ING, AND and HER) may also be detected in the corresponding ciphertext.
+        </p>
+        <p>These letters and their ordering may differ slightly according to the type and length of the sampled text. All authors have
+          their own style and vocabulary and this can lead to statistical differences, as can the subject matter and spelling, e.g.
+          English or American.
+        </p>
+        <p>The only truly secure encryption scheme is one known as a <strong>one-time pad</strong>, introduced in 1918 by Gilbert Vernam, an AT&amp;T engineer. Vernam's cipher used for its key a truly random and non-repeating
+          stream of bits, each bit being used only once in the encryption process. Each bit in the plaintext message is XORed with each
+          bit of the keystream to produce the ciphertext. After encryption the key is destroyed. Because of the random properties of
+          the keystream, the resulting ciphertext bears no statistical relationship with the plaintext and so is truly unbreakable.
+          The disadvantage of such a scheme, however, is that it requires the key to be at least the same length as the message and
+          each key can be used only once (hence the name one-time pad). Since both sender and recipient require a copy of the key and
+          a fresh key is needed for each message, this presents somewhat of a problem for key management. Despite these practical difficulties,
+          use of the one-time pad has proved effective for high-level government and military security applications.
+        </p>
+      </div>
+      <div class="section" id="sec004_006">
+        <h2>4.6 Hybrid systems</h2>
+        <p>As you have seen from earlier sections, a major advantage of asymmetric key systems over symmetric key systems is that no
+          exchange of a secret key is required between communicating entities. However, in practice public key cryptography is rarely
+          used for encrypting messages for the following reasons:
+        </p>
+        <ul>
+          <li>
+            <p>Security: it is vulnerable to chosen plaintext attacks.</p>
+          </li>
+          <li>
+            <p>Speed: encrypting data with public key algorithms generally takes about 1000 times longer than with symmetric key algorithms.</p>
+          </li>
+        </ul>
+        <p>Instead, a combination of symmetric and asymmetric key systems is often used. This system is based on the use of a <strong>session key</strong> – a temporary key used only for a single transaction or for a limited number of transactions before being discarded. The
+          following sequence between Alice and Bob demonstrates the use of a session key.
+        </p>
+        <ol class="list-decimal">
+          <li>
+            <p>Alice chooses a secret symmetric key that will be used as a session key.</p>
+          </li>
+          <li>
+            <p>Alice uses the session key to encrypt her message to Bob.</p>
+          </li>
+          <li>
+            <p>Alice uses Bob's public key to encrypt the session key.</p>
+          </li>
+          <li>
+            <p>Alice sends the encrypted message and the encrypted session key to Bob.</p>
+          </li>
+          <li>
+            <p>On receipt, Bob decrypts the session key using his own private key.</p>
+          </li>
+          <li>
+            <p>Bob uses the session key to decrypt Alice's message.</p>
+          </li>
+        </ol>
+        <div class="box_style1" id="act007">
+          <div class="box_header">
+            <h3>Activity 7</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>Why might a session key be preferable to the use of a recipient's public key?</p>
+            </div>
+            <p class="nav_button"><a id="d0e1518" href="u001_s004_answ014.html">View answer - Activity 7</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

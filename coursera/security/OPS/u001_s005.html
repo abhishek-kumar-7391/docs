@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>5 Implementing encryption in networks</title>
+    <link href="assets/main.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="sec005">
+      <h2>5 Implementing encryption in networks</h2>
+      <div class="section" id="sec005_001">
+        <h2>5.1 Overview</h2>
+        <p>Confidentiality between two communicating nodes is achieved by using an appropriate encryption scheme: data is encrypted at
+          the sending node and decrypted at the receiving node. Encryption will also protect the traffic between the two nodes from
+          eavesdropping to some extent. However, for encryption to be used effectively in networks, it is necessary to define what will
+          be encrypted, where this takes place in the network, and the layers that are involved in a reference model.
+        </p>
+        <div class="box_style1" id="act008">
+          <div class="box_header">
+            <h3>Activity 8</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>What are the implications of applying encryption to whole protocol data units including the headers at any particular layer
+                of a reference model?
+              </p>
+            </div>
+            <p class="nav_button"><a id="d0e1542" href="u001_s005_answ015.html">View answer - Activity 8</a></p>
+          </div>
+        </div>
+        <p>The implementation of encryption in packet-switched networks must ensure that essential addressing information can be accessed
+          by the relevant network devices such as switches, bridges and routers. Encryption is broadly termed <strong>link layer encryption</strong> or <strong>end-to-end encryption</strong> depending on whether it is applied and re-applied at each end of each link in a communication path, or whether it is applied
+          over the whole path between end systems. It is useful to identify the various implementations of encryption with the appropriate
+          OSI layer, as indicated in <a href="#fig009">Figure 9</a>.
+        </p>
+        <div class="figure-container" id="fig009">
+          <div><span><img src="assets/t823_1_009i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 9 Encryption in relation to the protocol layers (Source: based on King and Newson, 1999, p. 104)</p>
+        </div>
+        <p>End-to-end encryption is implemented at or above layer 3, the network layer of the OSI reference model, while link layer encryption
+          is applied at the data link and physical layers. When encryption is applied at the transport or network layers, end-to-end
+          refers to hosts identified by IP (internet protocol) addresses and, in the case of TCP (transmission control protocol) connections,
+          port numbers. In the context of application layer encryption, however, end-to-end is more correctly interpreted as <strong>process-to-process</strong>. <a href="#fig010">Figure 10</a> identifies the extent of encryption (unshaded areas) applied at each layer.
+        </p>
+        <div class="figure-container" id="fig010">
+          <div><span><img src="assets/t823_1_010i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 10 Alternative strategies for encryption (Source: based on Stallings, 1995, p. 139)</p>
+        </div>
+      </div>
+      <div class="section" id="sec005_002">
+        <h2>5.2 Link layer encryption</h2>
+        <p>Link layer encryption has been available for some time and can be applied by bulk encryptors, which encrypt all the traffic
+          on a given link. Packets are encrypted when they leave a node and decrypted when they enter a node. As <a href="#fig010">Figure 10</a>(a) shows, data link layer headers are not encrypted. Because network layer information, in the form of layer headers, is
+          embedded in the link data stream, link layer encryption is independent of network protocols. However, each link will typically
+          use a separate key to encrypt all traffic. This makes the encryption devices specific to a given medium or interface type.
+          In a large network, where many individual links may be used in a connection, traffic will need to be repeatedly encrypted
+          and decrypted. One disadvantage is that while data is held at a node it will be in the clear (unencrypted) and vulnerable.
+          Another is the need for a large number of keys along any path comprising many links. Hardware-based encryption devices are
+          required to give high-speed performance and to ensure acceptable delays at data link layer interfaces. The effectiveness of
+          link layer encryption depends on the relative security of nodes in the path, some of which may be within the internet. The
+          question of who can access nodes in the internet then becomes a significant concern.
+        </p>
+        <p>When applied to terrestrial networks, link layer encryption creates problems of delay and expense, but it is particularly
+          useful in satellite links, because of their vulnerability to eavesdropping. In this case the satellite service provider takes
+          responsibility for providing encryption between any two earth stations.
+        </p>
+      </div>
+      <div class="section" id="sec005_003">
+        <h2>5.3 End-to-end encryption</h2>
+        <p>I shall consider end-to-end encryption at the network layer and the application layer separately.</p>
+        <div class="subsection" id="sec005_003_001">
+          <h3>5.3.1 Network layer encryption</h3>
+          <p><strong>Network layer encryption</strong> is normally implemented between specific source and destination nodes as identified, for example, by IP addresses. As <a href="#fig010">Figure 10</a>(b) indicates, the network layer headers remain unencrypted.
+          </p>
+          <div class="box_style1" id="saq008">
+            <div class="box_header">
+              <h4>SAQ 8</h4>
+            </div>
+            <div class="box_body">
+              <div class="question">
+                <p>What threats that you have previously encountered in this unit are still present with network layer encryption?</p>
+              </div>
+              <p class="nav_button"><a id="d0e1603" href="u001_s005_answ016.html">View answer - SAQ 8</a></p>
+            </div>
+          </div>
+          <p>Network layer encryption may be applied to sections of a network rather than end-to-end; in this case the network layer packets
+            are encapsulated within IP packets. A major advantage of network layer encryption is that it need not normally be concerned
+            with the details of the transmission medium.
+          </p>
+          <p>A feature of encryption up to and including the network layer is that it is generally transparent to the user. This means
+            that users may be unaware of security breaches, and a single breach could have implications for many users. This is not the
+            case for application layer encryption. As with link layer encryption, delays associated with encryption and decryption processes
+            need to be kept to an acceptable level, but hardware-based devices capable of carrying out these processes have become increasingly
+            available.
+          </p>
+          <p>An important set of standards that has been introduced to provide network layer encryption, as well as other security services
+            such as authentication, integrity and access control in IP networks, is IPSec from the IP Security Working Group of the Internet
+            Engineering Task Force. You should refer to RFC 2401 if you need further details on these standards.
+          </p>
+        </div>
+        <div class="subsection" id="sec005_003_002">
+          <h3>5.3.2 Application layer encryption</h3>
+          <p>In <strong>application layer encryption</strong>, end-to-end security is provided at a user level by encryption applications at client workstations and server hosts. Of necessity,
+            encryption will be as close to the source, and decryption as close to the destination, as is possible. As <a href="#fig010">Figure 10</a>(c) shows, in application layer encryption only the data is encrypted.
+          </p>
+          <p>Examples of application layer encryption are S/MIME (secure/multipurpose internet mail extensions), S-HTTP (secure hypertext
+            transfer protocol), PGP (Pretty Good Privacy) and MSP (message security protocol). Another example is SET (secure electronic
+            transactions), which is used for bank card transactions over public networks. ‘Host layer encryption’ is a term sometimes
+            used to refer to programs that perform encryption and decryption on behalf of the applications that access them. An example
+            is secure socket layer.
+          </p>
+        </div>
+      </div>
+      <div class="section" id="sec005_004">
+        <h2>5.4 Link layer encryption and end-to-end encryption compared and combined</h2>
+        <div class="box_style1" id="act009">
+          <div class="box_header">
+            <h3>Activity 9</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>Comparing end-to-end encryption with link layer encryption, which do you think is better?</p>
+            </div>
+            <p class="nav_button"><a id="d0e1634" href="u001_s005_answ017.html">View answer - Activity 9</a></p>
+          </div>
+        </div>
+        <p>An effective way of securing a network is to combine end-to-end with link layer encryption. The user data portion of a packet
+          is encrypted at the host using an end-to-end encryption key. The packet is then transported across the nodes using link layer
+          encryption, allowing each node to read the header information but not the user data. The user data is secure for the entire
+          journey and only the packet headers are in the clear during the time the packet is processed by any node.
+        </p>
+        <div class="box_style1" id="saq009">
+          <div class="box_header">
+            <h3>SAQ 9</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>A network security manager in an organisation has overall responsibility for ensuring that networks are operated in a secure
+                manner. From the manager's perspective, what level of encryption would be most suitable and why?
+              </p>
+            </div>
+            <p class="nav_button"><a id="d0e1649" href="u001_s005_answ018.html">View answer - SAQ 9</a></p>
+          </div>
+        </div>
+        <p>In considering the application of any encryption scheme, the cost in terms of network delay, increased overheads and finance
+          must be weighed against the need for protection. As always, there is a need to balance the advantages of a more secure network
+          against the disadvantages of implementing security measures and the potential costs of data interception and network attack.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

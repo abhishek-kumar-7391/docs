@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>9 Access control</title>
+    <link href="assets/main.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="sec009">
+      <h2>9 Access control</h2>
+      <div class="section" id="sec009_001">
+        <h2>9.1 Introduction</h2>
+        <p>In this section I shall discuss two major approaches used to restrict access to networks – passwords and firewalls.</p>
+      </div>
+      <div class="section" id="sec009_002">
+        <h2>9.2 Passwords</h2>
+        <p>I have introduced encryption keys in previous sections. A <strong>password</strong> can also be thought of as a type of key in as much as it enables the keyholder to gain access to a particular resource. In
+          <a href="u001_s002.html#sec002_003">Section 2.3</a>, I described the process of starting up my computer at The Open University. I referred to the need to enter several sets
+          of user identities and passwords to access various services or software using my computer. Given the frequent use of passwords,
+          it is reasonable to consider what constitutes an effective password.
+        </p>
+        <p>A major issue here is human behaviour. It is tempting, for instance, to make a record of passwords that are used but not always
+          remembered, or to make all one's passwords identical, or to make them short or highly memorable in some personal way by linking
+          them to personal information, which is unlikely to be highly secure. Alternatively, names, places or normal words may be used
+          as passwords. There are security concerns with all these strategies. For example, electronic dictionaries could be used to
+          probe passwords that are based on known words in all languages. Where passwords are restricted to a small number of characters,
+          brute force methods may quickly find the one correct combination out of many that may be possible.
+        </p>
+        <p>An effective password, technically speaking, is one that can resist both dictionary and brute force attacks. (For the purposes
+          of network security a dictionary is a compilation of combinations of characters that find use in any field of activity. It
+          is not restricted to words commonly used for general human communication.) A dictionary attack seeks to identify any predictable
+          structure within the string of characters included in the password: for example, a name, a word, or a sequence of numbers,
+          such as in a date format. A brute force attack relies on the power of computers to cycle through combinations of characters
+          on a trial-and-error basis in the absence of predictable structure, until a successful conclusion is reached. If a password
+          contains any partial structure then the processing needed to discover it is reduced.
+        </p>
+        <div class="box_style1" id="saq011">
+          <div class="box_header">
+            <h3>SAQ 11</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>Based on the above, how would you specify how a password should be constructed?</p>
+            </div>
+            <p class="nav_button"><a id="d0e1975" href="u001_s009_answ024.html">View answer - SAQ 11</a></p>
+          </div>
+        </div>
+        <p>The security of an encrypted password used to access a remote station over a network depends on the form of encryption used
+          and whether it is applied over the whole path from sender to receiver. A variety of means can be used to collect or bypass
+          password protection systems. For instance, <strong>password crackers</strong> are programs specifically designed to capture password sequences, and decrypt or disable them. I referred earlier to the
+          use of protocol analysers, which may be used to ‘sniff’ traffic for password sequences. In addition, Trojans can be hidden
+          in programs that an attacker expects the legitimate user to run, and will contain a hidden routine to bypass the user's system's
+          password protection. Hence encryption does not prevent capture and there is a danger that message replay can lead to successful
+          access even when passwords cannot be decrypted by an attacker.
+        </p>
+        <p>Despite the problems associated with passwords, they remain a first line of defence to intruder access. There are several
+          examples of internet sites offering a consolidation service for an individual's multiplicity of passwords. The idea is that
+          a single encrypted password can be used to release the collection of passwords – a potential ‘winner-takes-all’ situation.
+        </p>
+        <div class="box_style1" id="act014">
+          <div class="box_header">
+            <h3>Activity 14</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>What alternatives to passwords could be used to allow or bar the use of facilities by a person (not necessarily restricted
+                to data networks)?
+              </p>
+            </div>
+            <p class="nav_button"><a id="d0e1991" href="u001_s009_answ025.html">View answer - Activity 14</a></p>
+          </div>
+        </div>
+        <div class="box_style1" id="act015">
+          <div class="box_header">
+            <h3>Activity 15</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>In the answer to the question above, what advantages do the examples referred to have over a password?</p>
+            </div>
+            <p class="nav_button"><a id="d0e2000" href="u001_s009_answ026.html">View answer - Activity 15</a></p>
+          </div>
+        </div>
+        <p>In general, combining two components, such as something you know (a password) and something you possess (e.g. a physical device
+          or attribute, whether separable from the legitimate user or not) gives a higher level of security than either component alone.
+          This is a valuable concept that is put to use in many practical security systems.
+        </p>
+        <div class="box_style1" id="act016">
+          <div class="box_header">
+            <h3>Activity 16</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>Think of examples where this principle is in common use.</p>
+            </div>
+            <p class="nav_button"><a id="d0e2011" href="u001_s009_answ027.html">View answer - Activity 16</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="sec009_003">
+        <h2>9.3 Firewalls – an overview</h2>
+        <p>Firewalls play an important role in restricting and controlling access to networks. A <strong> firewall</strong> is normally implemented within a router or gateway, and will monitor incoming and outgoing traffic at the boundary of the
+          protected zone. It is a device that denies external hosts access to selected insecure services within the protected zone (e.g.
+          denial of dial-in services), while also denying internal hosts access to insecure services outside the protected zone. <a href="#fig0013">Figure 13</a> shows a firewall protecting the only access to network A. There may be further control within the protected zone, for example
+          to limit access from one internal LAN segment to another. A firewall provides the means to implement some of an organisation's
+          network security policies and may be transparent to users of the network in terms of its presence and the level of inconvenience
+          caused. This depends on the type of firewall and the policies that are implemented.
+        </p>
+        <div class="figure-container" id="fig0013">
+          <div><span><img src="assets/t823_1_013i.jpg" alt="" id="fig013" /></span></div>
+          <p class="caption"> Figure 13 Firewall protection at point of access</p>
+        </div>
+        <div class="box_style1" id="act017">
+          <div class="box_header">
+            <h3>Activity 17</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>In the previous section I found it useful to regard a password as a type of key that would allow legitimate users access to
+                particular services. Would you consider a firewall to be another type of key?
+              </p>
+            </div>
+            <p class="nav_button"><a id="d0e2035" href="u001_s009_answ028.html">View answer - Activity 17</a></p>
+          </div>
+        </div>
+        <p>I shall now look at three different types of firewall – packet-filtering routers, application level gateways, and circuit
+          level gateways – concluding with examples of firewall implementation.
+        </p>
+      </div>
+      <div class="section" id="sec009_004">
+        <h2>9.4 Packet-filtering router</h2>
+        <p>A packet-filtering router either blocks or passes packets presented to it according to a set of <strong>filtering rules</strong>. <a href="#fig014">Figure 14</a> shows this arrangement.
+        </p>
+        <div class="figure-container" id="fig014">
+          <div><span><img src="assets/t823_1_014i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 14 Packet-filtering router</p>
+        </div>
+        <p>Filtering rules are based on various features of the service or protocols involved, including:</p>
+        <ul>
+          <li>
+            <p>the packet header information, e.g. IP source and destination addresses</p>
+          </li>
+          <li>
+            <p>the encapsulated protocol being used, e.g. TCP or UDP, ICMP or IP tunnel (see Box 4 below)</p>
+          </li>
+          <li>
+            <p>the transport layer source and destination ports</p>
+          </li>
+          <li>
+            <p>the ICMP message type</p>
+          </li>
+          <li>
+            <p>the incoming and outgoing interfaces for the packet.</p>
+          </li>
+        </ul>
+        <p>UDP (user datagram protocol) is a transport layer protocol in the internet reference model. It is used for traffic that does
+          not need the services of a TCP connection. ICMP (internet control message protocol) is used to communicate problems from routers
+          and hosts in the network. It supports, for example, the widely used PING command referred to in <a href="u001_s003.html#sec003_006">Section 3.6</a>.
+        </p>
+        <div class="box_style1" id="box004">
+          <div class="box_header">
+            <h3><strong>Box 4</strong>: IP tunnel
+            </h3>
+          </div>
+          <div class="box_body">
+            <p>In <strong>IP tunnel</strong> an extra IP header is added to a packet to avoid revealing the originating source and final destination IP addresses when
+              a message is being sent across an intermediate network. This idea of concealment of header details by tunnelling is employed
+              in some important security protocols that have been developed specifically for use in IP networks over the internet.
+            </p>
+          </div>
+        </div>
+        <p>The choice of rules and the way in which they are implemented will allow a router to admit or bar specific types of user traffic.
+          Services that may be called up by users at their computers are generally identified in terms of TCP or UDP port numbers. <a href="#fig015">Figure 15</a> shows where TCP port numbers are identified in the header and the box on TCP port numbers explains briefly the concept of
+          TCP ports.
+        </p>
+        <div class="figure-container" id="fig015">
+          <div><span><img src="assets/t823_1_015i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 15 TCP segment format</p>
+        </div>
+        <div class="box_style1" id="box005">
+          <div class="box_header">
+            <h3><strong>Box 5</strong>: TCP port numbers
+            </h3>
+          </div>
+          <div class="box_body">
+            <p>TCP is a connection-oriented protocol and provides services by creating end points called sockets at client and server machines.
+              A socket uses the IP address of the host and a 16-bit port number. (A port is sometimes referred to as a transport service
+              access point.) Port numbers below 1024 are reserved for standard services and are referred to as <strong>well-known ports</strong>.
+            </p>
+            <p>For example, Telnet is an application protocol associated with the TCP/IP family. It enables a user at one computer to log
+              in to another computer, issue commands to the operating system, and run programs. A Telnet server will listen for remote connections
+              on TCP port 23, while an email service based on another application protocol, SMTP (simple mail transfer protocol), will listen
+              for incoming connections on TCP port 25.
+            </p>
+            <p>The Internet Assigned Numbers Authority <a href="http://www.iana.org/assignments/port-numbers">(IANA)</a> has a list of well-known ports on its website.
+            </p>
+          </div>
+        </div>
+        <p>From the description in the box, Telnet presents a significant security risk in terms of its ability to exercise remote control
+          of a workstation, server or other network device. However, Telnet can be disallowed by including its TCP port number in the
+          filtering rules. Given that a TCP port number specifies a type of service and an IP address specifies a host address, you
+          should be able to see how combinations of the two can be used to restrict access to certain services to certain hosts. Consider
+          this further by attempting SAQ 12.
+        </p>
+        <div class="box_style1" id="saq012">
+          <div class="box_header">
+            <h3>SAQ 12</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>How could a packet-filtering router:</p>
+              <ol class="list-decimal">
+                <li>
+                  <p>restrict incoming traffic from a specified external network?</p>
+                </li>
+                <li>
+                  <p>restrict access to a Telnet service to selected hosts behind the firewall?</p>
+                </li>
+                <li>
+                  <p>combat an attempt by an outside source to masquerade as an internal host?</p>
+                </li>
+              </ol>
+            </div>
+            <p class="nav_button"><a id="d0e2132" href="u001_s009_answ029.html">View answer - SAQ 12</a></p>
+          </div>
+        </div>
+        <p>There are many types of attack that can be resisted using packet-filtering rules, but I shall consider just one other as an
+          example.
+        </p>
+        <p><a href="#fig016">Figure 16</a> shows the structure of an IPv4 packet. The fragment offset field and the three flag bits that precede it in the packet header
+          allow an IP packet to be split into two or more fragments, if it would otherwise exceed the maximum size set by the lower
+          layer frame limit. However, this feature could be misused in a number of ways. For example, a fragment could be forced to
+          be so small that the encapsulated packet header information would be split between fragments. Using this tactic, an attacker
+          could circumvent filtering rules that checked the header information of encapsulated packets (e.g. the port identities of
+          an encapsulated TCP segment as in <a href="#fig015">Figure 15</a>) only in the first fragment that is received.
+        </p>
+        <div class="figure-container" id="fig016">
+          <div><span><img src="assets/t823_1_016i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 16 IP packet format</p>
+        </div>
+        <div class="box_style1" id="saq013">
+          <div class="box_header">
+            <h3>SAQ 13</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p><a href="#fig015">Figure 15</a> defines the format of a TCP segment that is to be transported using IP. What would be the minimum number of bytes that should
+                be included in a fragmented IP packet to ensure that the TCP port identification was included?
+              </p>
+            </div>
+            <p class="nav_button"><a id="d0e2164" href="u001_s009_answ030.html">View answer - SAQ 13</a></p>
+          </div>
+        </div>
+        <p>A certain way to avoid a restricted service being accessed through the misuse of IP fragmentation would be to reject any IP
+          packet in which fragmentation was allowed. In practice, when fragmentation is allowed, packet-filtering routers are usually
+          set to reject IP fragments that are less than 20 bytes greater than the IP header length.
+        </p>
+        <p>Defining the rules under which packets are filtered demands a wide knowledge of internet service types. Filtering rules need
+          to be detailed and can become complex. When packets are filtered using complex rules, the time for each packet to be processed
+          by the router may increase significantly and degrade system performance. When traffic must be restricted because of its likely
+          topic content, a packet-filtering approach that works on the basis of addresses (at the IP and TCP levels) will not be able
+          to meet requirements. A higher layer approach is needed and this can be provided by the application level gateways that I
+          shall describe next.
+        </p>
+        <p>Despite the limitations of packet-filtering routers, they are widely deployed as they are economical and can be implemented
+          on standard routers, although additional software may need to be installed. Users behind a packet-filtering firewall generally
+          find the degree of restriction involved acceptable and relatively unobtrusive.
+        </p>
+      </div>
+      <div class="section" id="sec009_005">
+        <h2>9.5 Application level gateways</h2>
+        <p>An <strong>application level gateway</strong> is implemented through a <strong>proxy server</strong>, which acts as an intermediary between a client and a server. A client application from within the protected network may
+          request services originating from less secure networks such as the internet. After the client's authentication has been confirmed,
+          the requests for services are relayed onwards by the proxy server, provided that they are allowed by the security policies
+          in force. All subsequent data exchanges in relation to the service request are handled by the proxy server.
+        </p>
+        <p>An application level gateway relays requests for services at the application level. Policy decisions to block or permit traffic
+          are based on features identified in the application. For instance, electronic mail will be associated with a variety of mail
+          applications and an application level gateway will act on criteria such as the message size, header fields or likely content,
+          as indicated by key words. Application level gateways typically provide proxy services for email, Telnet and the World Wide
+          Web.
+        </p>
+        <p>Normally, each supported service is rigorously defined so that any undefined services are not available to users. Each internal
+          host allowed to use or provide the specified services must also be defined. The term ‘application level gateway’ is appropriate
+          because, from the view of both the clients within the protected network and the remote servers, the proxy server is seen as
+          the end user. The originating client and the remote server are hidden from each other.
+        </p>
+        <p>Because an application level gateway is exposed to greater risk than the hosts it protects, the proxy server normally takes
+          the form of a specially secured host, referred to as a <strong>bastion host</strong>. This is specifically designed to be more resistant to attacks than other hosts on the protected network. For instance, a
+          bastion host will run a secure version of the operating system, and may allow only essential services to be installed with
+          a restricted set of Telnet, DNS, FTP and SMTP protocols. (DNS is the domain name system used on the internet to convert between
+          the names of devices and their IP addresses. FTP is file transfer protocol, an application protocol in the TCP/IP family used,
+          for example, to connect file servers.) In addition, a strong user authentication process is employed along with audit facilities
+          that record any attempts to intrude.
+        </p>
+        <p>Code specifically designed to enhance regular checking for software bugs is used, and each proxy service is designed to operate
+          independently of others so that installation or removal of a service can be undertaken without affecting other services. Viruses
+          and worms may also be screened.
+        </p>
+        <p>Access to memory drives on the gateway is severely restricted to minimise threats from Trojans, and user log-on is not allowed.
+          Other threats that could be countered using this type of firewall include those arising from importing macros (a software
+          macro defines how a sequence of operations can be condensed into a single command), or inbound packets that include executable
+          files (containing EXE or COM extensions), because of the possibility of introducing virus and worm files into a network.
+        </p>
+        <div class="box_style1" id="saq014">
+          <div class="box_header">
+            <h3>SAQ 14</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>What do you think could be the disadvantages of the application level gateway approach compared with the packet-filtering
+                approach?
+              </p>
+            </div>
+            <p class="nav_button"><a id="d0e2209" href="u001_s009_answ031.html">View answer - SAQ 14</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="sec009_006">
+        <h2>9.6 Circuit level gateways</h2>
+        <p>A <strong>circuit level gateway</strong> operates at the transport layer of the OSI or internet reference models and, as the name implies, implements circuit level
+          filtering rather than packet level filtering. It checks the validity of connections (i.e. circuits) at the transport layer
+          (typically TCP connections) against a table of allowed connections, before a session can be opened and data exchanged. The
+          rules defining a valid session prescribe, for example, the destination and source addresses and ports, the time of day, the
+          protocol being used, the user and the password. Once a session is allowed, no further checks, for example at the level of
+          individual packets, are performed.
+        </p>
+        <p>A circuit level gateway acts as a proxy and has the same advantage as an application level gateway in hiding the internal
+          host from the serving host, but it incurs less processing than an application level gateway.
+        </p>
+        <p>Disadvantages of circuit level gateways include the absence of content filtering and the requirement for software modifications
+          relating to the transport function.
+        </p>
+        <p>Circuit level gateways can be implemented within application level gateways or as stand-alone systems. Implementation within
+          an application level gateway allows screening to be asymmetric, with a circuit level gateway in one direction and an application
+          level gateway in the other.
+        </p>
+        <div class="box_style1" id="saq015">
+          <div class="box_header">
+            <h3>SAQ 15</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>What advantages could arise from the asymmetry of the arrangement just described?</p>
+            </div>
+            <p class="nav_button"><a id="d0e2232" href="u001_s009_answ032.html">View answer - SAQ 15</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="sec009_007">
+        <h2>9.7 Examples of firewall implementation</h2>
+        <p>In practice, firewalls are likely to be combinations of the types that I have described. For example, a <strong>screened sub-network</strong> is commonly incorporated in a firewall scheme, as shown in <a href="#fig017">Figure 17</a>. In this configuration an application level gateway implemented in a bastion host is used in combination with two packet-filtering
+          routers. The screened sub-network that is formed is termed a <strong>demilitarised zone</strong> (DMZ). Placing servers and dial-in modems that are accessed by external users in a DMZ is a way of separating these higher-risk
+          components from the protected internal network. Both external hosts and hosts within the internal network have access to services
+          provided on the DMZ, but traffic across it is blocked, preventing external users from gaining direct access to the protected
+          internal network.
+        </p>
+        <div class="figure-container" id="fig017">
+          <div><span><img src="assets/t823_1_017i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 17 A combined firewall</p>
+        </div>
+        <p>To end this unit I shall very briefly indicate the way in which the Open University's network is protected by its firewall.</p>
+        <p><a href="#fig018">Figure 18</a> represents the Open University's firewall arrangement, which needs to accommodate the diverse networking needs of many people:
+          for example, students, administrators, academics, whether on site or working from remote sites such as conference venues,
+          home or summer school locations. The Open University has its headquarters at Walton Hall, Milton Keynes. Thirteen regional
+          centres and warehousing facilities each have LANs linked to the Walton Hall LAN to create the Open University's wide area
+          network.
+        </p>
+        <div class="figure-container" id="fig018">
+          <div><span><img src="assets/t823_1_018i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 18 The Open University firewall</p>
+        </div>
+        <p><a href="#fig018">Figure 18</a> shows the firewall protecting the Walton Hall / internet interface. The services that students need to access are located
+          within the DMZs. Students typically connect from their homes using dial-up modems or ADSL links to access the internet through
+          their internet service providers, or they gain access from their workplaces. Web browsers are used to access services such
+          as the library, the main web server or student services, and electronic conferencing software is used to access the servers
+          that support the various course conferences.
+        </p>
+        <p>In general, the firewall allows traffic to and from the DMZs but only traffic that can be identified as being initiated by
+          internal users on the Open University's LANs is permitted to cross the firewall.
+        </p>
+        <p>An additional feature of the Open University's arrangements allows authorised staff access to appropriate areas of the Walton
+          Hall LAN from external locations. To do this a virtual private network (VPN) provides a logical bypass to the firewall, but
+          access is secured by the use of ‘one-time’ password generators in ‘key fobs’ allocated to authorised users. These generate
+          a frequent supply of different passwords. Before any request for services using the VPN is granted, the user requesting the
+          service must respond with a valid password to a challenge from the VPN security system.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

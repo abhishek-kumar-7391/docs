@@ -1,0 +1,4 @@
+The security of hashing depends on the hash function. The hash function must be computationally irreversible (one-way hash functions).
+one-way hash functions : easy to compute the hash from the string, but the reverse is not possible.
+Message authentication code : similar to hash function, but the algorithm uses a secret key, thus a key is required to perform the check.
+Message reply attacks: record a message and then replay it at some later time in future.

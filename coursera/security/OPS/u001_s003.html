@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>3 Threats to communication networks</title>
+    <link href="assets/main.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="sec003">
+      <h2>3 Threats to communication networks</h2>
+      <div class="section" id="sec003_001">
+        <h2>3.1 How have network security measures developed over the past fifty years?</h2>
+        <p>To start this section it is useful to reflect on the different obstacles that an intruder, intending to eavesdrop on a telephone
+          conversation, might face today compared with fifty years ago, before electronic processing as we now know it. I shall consider
+          an attack first between a home telephone and its local exchange (of the order of a mile or less), and then beyond the local
+          exchange.
+        </p>
+        <p>Eavesdropping on a telephone conversation has never been technically difficult. In particular, ‘tapping’ the wires of the
+          target telephone in the local circuit would have been straightforward fifty years ago, provided that physical access could
+          be gained to the wires. In many old films eavesdropping was carried out by an intruder in the basement of an apartment block
+          or in a wiring cabinet in the street, using a basic set of equipment that included a pair of crocodile clips making a connection
+          to some simple listening equipment. Today, in principle, a similar approach could still be successful over the last mile of
+          the telephone distribution system. Much of the technology is still analogue, and signals can be detected by either direct
+          contact with the twisted-pair wires or by sensing fields radiating from the transmissions. However, where ADSL (asymmetric
+          digital subscriber line) or ISDN (integrated services digital network) services are provided, separating a telephone conversation
+          from data traffic would need an ADSL modem or ISDN telephone and the knowledge to connect them correctly. This information
+          is commonly available, so should not be a major obstacle in itself.
+        </p>
+        <p>Beyond the local exchange, signals are combined (multiplexed) for carrying over transmission links, so to eavesdrop on a particular
+          telephone message it must be ‘unpicked’ from other multiplexed messages. In the 1950s the multiplexing of analogue voice messages
+          relied on the use of different frequency bands (frequency division multiplexing) within a link's available bandwidth, but
+          today time division multiplexing is widely employed to accommodate a mix of digitised voice and data traffic. In digital networks,
+          greater difficulty may be experienced in identifying or selecting individual channels. However, agencies with an interest
+          in selecting potentially valuable information from a mass of traffic can identify key words that are spoken or written in
+          data streams. Digital technology makes it much easier to search for and access data in a structured manner.
+        </p>
+        <p>Another complication is the coding algorithms that are applied for a variety of purposes, but a determined intruder should
+          not find it difficult to reverse these processes, given that many software tools are available from the internet. In fact,
+          it is probably the wide availability of tools that can assist intrusion that makes modern networks susceptible, despite their
+          use of increasingly sophisticated technology.
+        </p>
+        <div class="box_style1" id="act002">
+          <div class="box_header">
+            <h3>Activity 2</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>What fundamental security measures have been traditionally used in organisations such as banks or government departments,
+                apart from those involving computer networks, and are they relevant to network security?
+              </p>
+            </div>
+            <p class="nav_button"><a id="d0e631" href="u001_s003_answ002.html">View answer - Activity 2</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="sec003_002">
+        <h2>3.2 Important terminology and information for making the most of this section</h2>
+        <p>Before we move on to consider specific issues of network security, I need to introduce some important terms that I shall use
+          when describing how data is stored, processed or transmitted to other locations. These are:
+        </p>
+        <ul>
+          <li>
+            <p><strong>Confidentiality</strong>, in terms of selecting who or what is allowed access to data and systems. This is achieved through encryption and access
+              control systems. Even knowledge of the existence of data, rather than the information that it contains, may be of significant
+              value to an eavesdropper.
+            </p>
+          </li>
+          <li>
+            <p>The <strong>integrity</strong> of data, where modification is allowed only by authorised persons or organisations. The modifications could include any changes
+              such as adding to, selectively deleting from, or even changing the status of a set of data.
+            </p>
+          </li>
+          <li>
+            <p>The <strong>freshness</strong> of data contained in messages. An attacker could capture part or all of a message and re-use it at a later date, passing
+              it off as a new message. Some method of incorporating a freshness indicator (e.g. a time stamp) into messages minimises the
+              risk of this happening.
+            </p>
+          </li>
+          <li>
+            <p>The <strong>authentication</strong> of the source of information, often in terms of the identity of a person as well as the physical address of an access point
+              to the network such as a workstation.
+            </p>
+          </li>
+          <li>
+            <p>The <strong>availability</strong> of network services, including security procedures, to authorised people when they are needed.
+            </p>
+          </li>
+        </ul>
+        <p>In general, attacks on data networks can be classified as either passive or active as shown in <a href="#fig002">Figure 2</a>.
+        </p>
+        <div class="figure-container" id="fig002">
+          <div><span><img src="assets/t823_1_002i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 2 Forms of attack (Source: based on Stallings, 2001, p. 64)</p>
+        </div>
+        <p>This is a suitable point at which to listen to the audio track ‘Digital dangers’. This provides some additional perspectives
+          to supplement your study of this unit.
+        </p>
+        <div id="aud001_001">
+          <div class="info-box">
+            <p>Audio content is not available in this format.</p>
+          </div>
+          <p class="caption">Hacking Audio</p>
+          <p class="nav_button"><a id="d0e685" href="u001_s003_tran001.html">View transcript - Hacking Audio</a></p>
+        </div>
+      </div>
+      <div class="section" id="sec003_003">
+        <h2>3.3 Passive attacks</h2>
+        <p>A <strong>passive attack</strong> is characterised by the interception of messages without modification. There is no change to the network data or systems.
+          The message itself may be read or its occurrence may simply be logged. Identifying the communicating parties and noting the
+          duration and frequency of messages can be of significant value in itself. From this knowledge certain deductions or inferences
+          may be drawn regarding the likely subject matter, the urgency or the implications of messages being sent. This type of activity
+          is termed <strong>traffic analysis</strong>. Because there may be no evidence that an attack has taken place, prevention is a priority.
+        </p>
+        <p>Traffic analysis, however, may be a legitimate management activity because of the need to collect data showing usage of services,
+          for instance. Some interception of traffic may also be considered necessary by governments and law enforcement agencies interested
+          in the surveillance of criminal, terrorist and other activities. These agencies may have privileged physical access to sites
+          and computer systems.
+        </p>
+        <div class="box_style1" id="act003">
+          <div class="box_header">
+            <h3>Activity 3</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>Suppose that, in a passive attack, an eavesdropper determined the telephone numbers that you called, but not the message content,
+                and also determined the websites that you visited on a particular day. Compare in relative terms the intelligence value of
+                each approach. <strong>Hint:</strong> you will find some help here on the audio track ‘Digital dangers’.
+              </p>
+            </div>
+            <p class="nav_button"><a id="d0e840" href="u001_s003_answ003.html">View answer - Activity 3</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="sec003_004">
+        <h2>3.4 Active attacks</h2>
+        <p>An <strong>active attack</strong> is one in which an unauthorised change of the system is attempted. This could include, for example, the modification of transmitted
+          or stored data, or the creation of new data streams. <a href="#fig002">Figure 2</a> (see Section 3.2) shows four sub-categories here: masquerade or fabrication, message replay, message modification and denial
+          of service or interruption of availability.
+        </p>
+        <p><strong>Masquerade attacks</strong>, as the name suggests, relate to an entity (usually a computer or a person) taking on a false identity in order to acquire
+          or modify information, and in effect achieve an unwarranted privilege status. Masquerade attacks can also incorporate other
+          categories.
+        </p>
+        <p><strong>Message replay</strong> involves the re-use of captured data at a later time than originally intended in order to repeat some action of benefit to
+          the attacker: for example, the capture and replay of an instruction to transfer funds from a bank account into one under the
+          control of an attacker. This could be foiled by confirmation of the freshness of a message.
+        </p>
+        <p><strong>Message modification</strong> could involve modifying a packet header address for the purpose of directing it to an unintended destination or modifying
+          the user data.
+        </p>
+        <p><strong>Denial-of-service attacks</strong> prevent the normal use or management of communication services, and may take the form of either a targeted attack on a particular
+          service or a broad, incapacitating attack. For example, a network may be flooded with messages that cause a degradation of
+          service or possibly a complete collapse if a server shuts down under abnormal loading. Another example is rapid and repeated
+          requests to a web server, which bar legitimate access to others. Denial-of-service attacks are frequently reported for internet-connected
+          services.
+        </p>
+        <p>Because complete prevention of active attacks is unrealistic, a strategy of detection followed by recovery is more appropriate.</p>
+        <div class="box_style1" id="act004">
+          <div class="box_header">
+            <h3>Activity 4</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>What example of a replayed message could lead to a masquerade attack?</p>
+            </div>
+            <p class="nav_button"><a id="d0e878" href="u001_s003_answ004.html">View answer - Activity 4</a></p>
+          </div>
+        </div>
+        <p>In this unit I shall not deal with the detailed threats arising from computer viruses, but just give a brief explanation of
+          some terms. The word ‘virus’ is used collectively to refer to Trojans and worms, as well as more specifically to mean a particular
+          type of worm.
+        </p>
+        <ul>
+          <li>
+            <p>A <strong>Trojan</strong> is a program that has hidden instructions enabling it to carry out a malicious act such as the capture of passwords. These
+              could then be used in other forms of attack.
+            </p>
+          </li>
+          <li>
+            <p>A <strong>worm</strong> is a program that can replicate itself and create a level of demand for services that cannot be satisfied.
+            </p>
+          </li>
+          <li>
+            <p>The term <strong>virus</strong> is also used for a worm that replicates by attaching itself to other programs.
+            </p>
+          </li>
+        </ul>
+        <div class="box_style1" id="saq001">
+          <div class="box_header">
+            <h3>SAQ 1</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>How might you classify a computer virus attack according to the categories in <a href="#fig002">Figure 2</a> (see Section 3.2)?
+              </p>
+            </div>
+            <p class="nav_button"><a id="d0e911" href="u001_s003_answ005.html">View answer - SAQ 1</a></p>
+          </div>
+        </div>
+        <div class="box_style1" id="saq002">
+          <div class="box_header">
+            <h3>SAQ 2</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>An attack may also take the form of a hoax. A hoax may consist of instructions or advice to delete an essential file under
+                the pretence, for instance, of avoiding virus infection. How would you categorise this type of attack?
+              </p>
+            </div>
+            <p class="nav_button"><a id="d0e923" href="u001_s003_answ006.html">View answer - SAQ 2</a></p>
+          </div>
+        </div>
+        <p>Threats to network security are not static. They evolve as developments in operating systems, application software and communication
+          protocols create new opportunities for attack.
+        </p>
+        <div class="box_style1" id="box002">
+          <div class="box_body">
+            <p>During your study of this unit it would be a good idea to carry out a web search to find the most common forms of network
+              attack. A suitable phrase containing key words for searching could be:
+            </p>
+            <ul>
+              <li>
+                <p>most common network security vulnerabilities</p>
+              </li>
+            </ul>
+            <p>Limit the search to reports within a year. Can you relate any of your findings to the general categories discussed above?
+              What areas of vulnerability predominate? When I searched in early 2003, the most commonly reported network attacks were attributable
+              to weaknesses in software systems (program bugs) and protocol vulnerabilities. Poor discipline in applying passwords rigorously
+              and failure to implement other security provision were also cited. Another particular worry was the new opportunities for
+              attack created by wireless access to fixed networks.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="sec003_005">
+        <h2>3.5 Potential network vulnerabilities</h2>
+        <p>Whatever the form of attack, it is first necessary to gain some form of access to the target network or network component.
+          In this section I shall take a brief look at a hypothetical network to see where an attacker may achieve this in the absence
+          of appropriate defence measures.
+        </p>
+        <p><a href="#fig003">Figure 3</a> shows the arrangement of a typical local area network (LAN), in which repeater hubs provide interconnections between workstations
+          for a group of users (a work group), with different work groups being interconnected through backbone links and having access
+          to the public switched telephone network (PSTN) and a packet-switched network. Repeater hubs are also used to refresh the
+          transmitted signal to compensate for the attenuation caused by the transmission medium. I shall use <a href="#fig003">Figure 3</a> to explore the potential for security breaches in a basic network.
+        </p>
+        <div class="figure-container" id="fig003">
+          <div><span><img src="assets/t823_1_003i.jpg" alt="" /></span></div>
+          <p class="caption"> Figure 3 A typical LAN</p>
+        </div>
+        <p>Typically, the LAN will be Ethernet based, operating on the broadcast principle, whereby each packet (or strictly frame) is
+          presented to all workstations on the local segment, but is normally accepted and read only by the intended receiving station.
+          (Segment in this context refers to part of a local area network.) A broadcast environment is advantageous to someone attempting
+          to carry out either a passive or an active attack locally. Switches that separate work groups on a LAN incorporate a bridge
+          function, and bridges learn where to send packets by noting the source addresses of packets they receive and recording this
+          information in a forwarding table. The contents of the forwarding table then determine on which port on the switch packets
+          will be sent. An attacker could corrupt entries in forwarding tables by modifying the source address information of incoming
+          packets presented to a bridge. Future packets could then be forwarded to inappropriate parts of the network as a result.
+        </p>
+        <div class="box_style1" id="saq003">
+          <div class="box_header">
+            <h3>SAQ 3</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>How would you categorise this form of attack?</p>
+            </div>
+            <p class="nav_button"><a id="d0e961" href="u001_s003_answ007.html">View answer - SAQ 3</a></p>
+          </div>
+        </div>
+        <p>Routers also have forwarding tables that may be vulnerable to attack. However, they are configured in a different way from
+          switches and bridges, depending on the security policies applied to the network. In some networks human network managers load
+          forwarding tables that may remain relatively unchanged over some time. In larger networks, routing algorithms may update forwarding
+          tables automatically to reflect current network conditions. The policy may be to route packets along a least-cost path, where
+          the criterion for least cost may be, for example, path length, likely congestion levels or error rate. As routers share information
+          they hold with neighbouring routers, any breach of one router's tables could affect several other routers. Any interference
+          could compromise the delivery of packets to their intended destination and cause abnormal loading in networks, leading to
+          denial of service. Routing tables or policies can be changed legitimately by, for example, network management systems, and
+          this highlights the need for the management systems themselves to be protected against manipulation by intruders.
+        </p>
+        <p>Returning to <a href="#fig003">Figure 3</a>, some organisations need to provide dial-in facilities for employees located away from the workplace. Dial-in access may
+          present further opportunities for attack, and measures to protect this vulnerability will need to be considered. A wireless
+          access point is also indicated, providing access for several wireless workstations to the wired LAN. Reports of security breaches
+          on wireless LANs are widespread at the time of writing (2003), giving rise to the term ‘drive-by hacking’, although many instances
+          have occurred quite simply because basic security features have not been activated. As a result, all the attacks on the LAN
+          that I have described so far can be performed by someone who does not even have physical access to the site, but could be
+          on the street nearby, for example in a parked car.
+        </p>
+        <p>Some places on a LAN are particularly vulnerable. For example, connections to all internal data and voice communication services
+          would be brought together in a wiring cabinet for patching across the various cable runs and for connecting to one or more
+          external networks. An intruder would find this a convenient point for tapping into selected circuits or installing eavesdropping
+          equipment, so mechanical locks are essential here.
+        </p>
+      </div>
+      <div class="section" id="sec003_006">
+        <h2>3.6 Tapping into transmission media</h2>
+        <p>Venturing beyond the organisation's premises in <a href="#fig003">Figure 3</a> (see Section 3.5), there are many opportunities for interception as data passes through external links. These could be cable
+          or line-of-sight links such as microwave or satellite. The relative ease or difficulty of achieving a connection to external
+          transmission links is worth considering at this point.
+        </p>
+        <p>Satellite, microwave and wireless transmissions can provide opportunities for passive attack, without much danger of an intruder
+          being detected, because the environment at the point of intrusion is virtually unaffected by the eavesdropping activity. Satellite
+          transmissions to earth generally have a wide geographic spread with considerable over-spill of the intended reception area.
+          Although microwave links use a fairly focused beam of radiated energy, with appropriate technical know-how and some specialist
+          equipment it is relatively straightforward physically to access the radiated signals.
+        </p>
+        <p>I have already mentioned vulnerabilities arising from wireless LANs. In general, detecting and monitoring unencrypted wireless
+          transmissions is easy. You may have noticed that when you switch a mobile telephone handset on, an initialisation process
+          starts, during which your handset is authenticated and your location registered. The initial sequence of messages may be picked
+          up by other circuits such as a nearby fixed telephone handset or a public address system, and is often heard as an audible
+          signal. This indicates how easy it is to couple a wireless signal into another circuit. Sensing a communication signal may
+          be relatively straightforward, but separating out a particular message exchange from a multiplex of many signals will be more
+          difficult, especially when, as in mobile technology, frequency hopping techniques are employed to spread the spectrum of messages
+          and so avoid some common transmission problems. However, to a determined attacker with the requisite knowledge, access to
+          equipment and software tools, this is all possible.
+        </p>
+        <p>Tapping into messages transmitted along cables without detection depends on the cable type and connection method. It is relatively
+          straightforward to eavesdrop on transmitted data by positioning coupling sensors close to or in direct contact with metallic
+          wires such as twisted pairs. More care would be needed with coaxial cables owing to their construction. Physical intrusion
+          into physical media such as metallic wires may cause impedance changes, which in principle can be detected by time domain
+          reflectometry. This technique is used to locate faults in communication media and is commonly applied to metallic cables or
+          optical fibres for maintenance purposes. In practice, however, the levels of disturbance may be too slight to be measurable.
+          The principle can also be applied to optical fibres.
+        </p>
+        <div class="box_style1" id="act005">
+          <div class="box_header">
+            <h3>Activity 5</h3>
+          </div>
+          <div class="box_body">
+            <div class="question">
+              <p>Can you think of any difficulties in the interception of signals at a point along an optical fibre?</p>
+            </div>
+            <p class="nav_button"><a id="d0e996" href="u001_s003_answ008.html">View answer - Activity 5</a></p>
+          </div>
+        </div>
+        <p>So far I have discussed the possibilities of gaining physical access to communication networks and hence the data that is
+          carried on them. However, many users are interconnected through the internet or other internetworks, and these wider networks
+          (particularly the internet) offer a broad range of opportunities without the need for intruders to move away from their desks.
+          Many software tools have been developed for sound, legitimate purposes. For example, <em>protocol analysers</em> (or <em>sniffers)</em> analyse network traffic and have valid use in network management activities. Network discovery utilities based on the PING
+          (packet internet groper) and TRACEROUTE commands are widely included in many PC operating systems and allow IP (internet protocol)
+          addresses to be probed and routes through networks to be confirmed. The very same tools, however, can be used equally effectively
+          for attacks on networks. If much of the traffic on the large public networks can be intercepted by determined attackers, how
+          is network security to be achieved? It is the role of encryption to hide or obfuscate the content of messages, and this is
+          the subject of the next section.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

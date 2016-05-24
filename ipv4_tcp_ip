@@ -12,3 +12,5 @@ Checksum implementation : RFC 1071 [Braden, Borman, and Partridge 1988]
 IP can receive a datagram from TCP, UDP, ICMP, or IGMP (that is, a
 locally generated datagram) to send, or one that has been received from a network interface (a
 datagram to forward).
+
+Advantages of Subnetting : -> reduces the size of the routing tables.

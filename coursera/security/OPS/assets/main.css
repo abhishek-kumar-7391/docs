@@ -1,0 +1,188 @@
+/* main epub css */
+*, html *, body * {margin:0; padding:0; font-family:'Arial Unicode MS', sans-serif;}
+/* paragraphs */
+p {padding:0.25em 0;}
+/* main headings */
+h1 {padding:0 0 0.1em 0; font-size:1.8em;}
+h2 {padding:0.8em 0 0.1em 0; font-size:1.6em;}
+h3 {padding:0.8em 0 0.1em 0; font-size:1.4em;}
+h4 {padding:0.8em 0 0.1em 0; font-size:1.2em;}
+h5 {padding:0.8em 0 0.1em 0; font-size:1.1em;}
+h6 {padding:0.8em 0 0.1em 0; font-size:1em;}
+/* [TODO] fixed headings e.g. in boxes */
+
+/* links */
+a {color:#143748;}
+.note-marker a {margin:0 0.1em; padding:0.1em 0.2em; background-color:#fffac2; font-size:0.6em; font-weight:normal; font-style:normal; vertical-align:top;}
+
+/* font inherit for inline elements */
+a, b, i, u, em, sup, sub, strong {font-family:inherit;}
+
+/* lists */
+ul {list-style-type:disc;}
+ol {list-style-type: decimal;}
+ul, ol, dl {margin:0.25em 0; padding:0 0 0 2em;}
+ol ul, ul ol, ul ul, ol ol {margin:0;}
+.list-unnumbered {list-style-type:none;}
+.list-decimal {list-style-type:decimal;}
+.list-lower-roman {list-style-type:lower-roman;}
+.list-upper-roman {list-style-type:upper-roman;}
+.list-lower-alpha {list-style-type:lower-alpha;}
+.list-upper-alpha {list-style-type:upper-alpha;}
+/*.question {list-style-type:disc;}
+.answer {list-style-type:circle;}*/
+.itq_question {width:0.8em; height:0.8em; float:left; margin:0.25em 0 0 -1.5em; border:solid 1px #296e8f; background-color:#296e8f;}
+.itq_answer {width:0.8em; height:0.8em; float:left; margin:0.25em 0 0 -1.5em; border:solid 1px #296e8f; background-color:#add0e1;}
+
+/* glossary definition list */
+dl.glossary {margin:0; padding:0;}
+dl.glossary dt {font-weight: bold;}
+dl.glossary dd {margin:0 0 0.8em 0;}
+
+/* glossary definition terms */
+dfn.glossary-term {color:inherit;font-style:normal;font-weight:bold}
+
+/* boxes */
+.box_style1, .box_style2, .box_style3 {border-radius:0.2em;}
+            /* default style if not specified - Example, Excersise, SAQ,  */
+.box_style1 {margin:1em 0em; border:solid 1px #cccccc; padding:0em; background-color:#dcedff;}
+.box_style1 .box_header {margin:0em; border-bottom:solid 1px #cccccc; padding:0 1em;}
+.box_style1 .box_body {margin:0em; padding:0.5em 1em;}
+            /* also used for CaseStudy */
+.box_style2 {margin:1em 0em; border:solid 1px #cccccc; padding:0em; background-color:#ecedd8;}
+.box_style2 .box_header {margin:0em; border-bottom:solid 1px #cccccc; padding:0 1em;}
+.box_style2 .box_body {margin:0em; padding:0.5em 1em;}
+            /* also used for Readings */
+.box_style3 {margin:1em 0em; border:solid 0.1em #cccccc; padding:0em; background-color:#ffffff;}
+.box_style3 .box_header {margin:0em 1em; border-bottom:solid 0.2em #cccccc; padding:0;}
+.box_style3 .box_body {margin:0em; padding:0.5em 1em;}
+            /* [TODO] variation of box_style3 for Reading */
+.reading {} 
+            /* also used for Extracts */
+.box_style4 {margin:1em 0em; border-left:solid 0.4em #78a9c2; padding:0em; background-color:#ffffff;}
+.box_style4 .box_header {margin:0em 1em; padding:0em;}
+.box_style4 .box_body {margin:0em; padding:0em 1em;}
+
+/* KeyPoints and StudyNote boxes */
+.keypoints, .studynote {margin:1em 0; border:solid 1px #cccccc; padding:0em; background-color:#eefffe; background-image:linear-gradient(to bottom, #cceeed, #ffffff 2em, #ffffff);}
+.keypoints .box_header, .studynote .box_header {margin:0; padding:0em 1em;}
+.keypoints .box_body, .studynote .box_body {margin:0em; padding:0.5em 1em;}
+
+.box_header h1, .box_header h2, .box_header h3, .box_header h4, .box_header h5, .box_header h6 {margin:0; padding:0.5em 0; font-size:1.2em;}
+.box_body h1, .box_body h2, .box_body h3, .box_body h4, .box_body h5, .box_body h6 {font-size:1.1em;}
+
+.proof_header { margin:0; padding:0.5em 0; font-size:1.6em; }
+.proof_header::after { content: "    " } 
+.tombstone { margin:0; padding:0.5em 0; font-size:1.6em; } 
+
+/* computing related */
+code {font-family:monospace; -epub-hyphens:none; -epub-tab-space:4; hyphens:none; tab-space:4;}
+.computerdisplay {margin:0.75em 0 1em 0.75em;}
+.programlisting {margin:1em 0;}
+.computerdisplay pre, .programlisting pre {padding:0.25em 0; white-space:pre-wrap;}
+.computer-ui {color:inherit; font-size:0.83em; font-style:normal; letter-spacing:0.2em; padding:0 0.1em; background-color:#eeeeee;}
+
+/* dialogue and transcript */
+.dialogue_line {margin:0 1em;}
+.speaker {width:10em; float:left; margin:0; padding:0.25em 0; font-weight:bold;}
+.remark {margin:0 0 0 11em; padding:0.25em 0;}
+
+/* interactions */
+.option {margin:0.5em; border:solid 1px #c7c7c7; padding:0 0.5em;}
+.option_right {margin:0.5em; border:solid 4px #a4a400; padding:0 0.5em;}
+.option_wrong {margin:0.5em; border:solid 2px #c10031; padding:0 0.5em;}
+
+.pair_match {width:45%; margin:0.5em; border-top:solid 1px #c7c7c7; border-right:dotted 3px #c7c7c7; border-bottom:solid 1px #c7c7c7; border-left:solid 1px #c7c7c7; padding:0 0.5em;}
+.pair_option {width:45%; margin:0.5em; border-top:solid 1px #454545; border-right:solid 1px #454545; border-bottom:solid 1px #454545; border-left:dotted 3px #454545; padding:0 0.5em;}
+.pairs .pair_match {float:left;}
+.pairs .pair_option {float:right;}
+.pairs {clear:both;}
+
+.free_response {margin:0.25em 0; border:solid 1px #c7c7c7; padding:0.5em; color:#5c5c5c; font-family:serif; font-style:italic;}
+
+/* sidenote */
+.sidenote {margin:0.5em 0 0.5em 30%; border-right:solid 0.6em #d3d3d3; padding:0 0.4em 0 0; font-size:0.8em; text-align:right;}
+.sidenote h1, .sidenote h2, .sidenote h3, .sidenote h4, .sidenote h5, .sidenote h6 {margin:0; padding:0; font-size:1em; text-align:right;}
+.sidenote p {margin:0.2em 0 0 0; padding:0; text-align:right;}
+
+/* tables */
+.table-container {margin:1em 0;}
+table {border-collapse:collapse;}
+.accounts, .landscape, .normal, .type2, .wide {width:100%;}
+.narrow th, .narrow td {border:none;}
+.landscape, .wide {font-size:0.8em;}
+th, td {padding:0.2em 0.4em; vertical-align:top; text-align:left}
+.allrules td, .allrules th {border:solid 1px #000000;}
+/*.chessboard {}*/
+.horizontalrules th, .horizontalrules td {border-bottom:solid 1px #000000;}
+.horizontalrules, .topbottomrules {border-top:solid 1px #000000; border-bottom:solid 1px #000000;}
+/*.horizontalstripes {}*/
+.rowstripe th, .rowstripe td, .chess, .colstripe {background-color:#dcedff;}
+.rowstripe .chess {background-color:#ffffff;}
+/*.norules {}*/
+.verticalrules {border-left:solid 1px #000000;}
+.verticalrules th, .verticalrules td {border-right:solid 1px #000000;}
+/*.verticalstripes {}*/
+.TableCentered, .ColumnHeadCentered {text-align:center;}
+.TableDecimal, .TableRight, .ColumnHeadRight {text-align:right;}
+.TableLeft, .ColumnHeadLeft {text-align:left;}
+td.border-b, th.border-b {border:none 0 transparent; border-bottom:solid 1px #000000;}
+td.border-l, th.border-l {border:none 0 transparent; border-left:solid 1px #000000;}
+td.border-r, th.border-r {border:none 0 transparent; border-right:solid 1px #000000;}
+td.border-t, th.border-t {border:none 0 transparent; border-top:solid 1px #000000;}
+td.border-bl, th.border-bl {border:none 0 transparent; border-bottom:solid 1px #000000; border-left:solid 1px #000000;}
+td.border-br, th.border-br {border:none 0 transparent; border-bottom:solid 1px #000000; border-right:solid 1px #000000;}
+td.border-bt, th.border-bt {border:none 0 transparent; border-bottom:solid 1px #000000; border-top:solid 1px #000000;}
+td.border-lr, th.border-lr {border:none 0 transparent; border-left:solid 1px #000000; border-right:solid 1px #000000;}
+td.border-lt, th.border-lt {border:none 0 transparent; border-left:solid 1px #000000; border-top:solid 1px #000000;}
+td.border-rt, th.border-rt {border:none 0 transparent; border-right:solid 1px #000000; border-top:solid 1px #000000;}
+td.border-blr, th.border-blr {border:none 0 transparent; border-bottom:solid 1px #000000; border-left:solid 1px #000000; border-right:solid 1px #000000;}
+td.border-blt, th.border-blt {border:none 0 transparent; border-bottom:solid 1px #000000; border-left:solid 1px #000000; border-top:solid 1px #000000;}
+td.border-brt, th.border-brt {border:none 0 transparent; border-bottom:solid 1px #000000; border-right:solid 1px #000000; border-top:solid 1px #000000;}
+td.border-lrt, th.border-lrt {border:none 0 transparent; border-left:solid 1px #000000; border-right:solid 1px #000000; border-top:solid 1px #000000;}
+td.border-blrt, th.border-blrt {border:solid 1px #000000;}
+.highlight {background-color:#fffac2;}
+/* styles for multi-column text tables */
+.hide-th th {visibility:hidden; height:0px;}
+/* styles for Total tag */
+.total_single_above {border-top: 1px solid;}
+.total_single_below {border-bottom: 1px solid;}
+.total_double_above {border-top: 3px double;}
+.total_double_below {border-bottom: 3px double;}
+
+/* figures */
+img {max-width:100%;}
+.figure-container {margin:1em 0;}
+.eqn_label {float:right;}
+.text_eqn {font-family:'Times New Roman', Times, serif;}
+
+
+/* misc. */
+em.second-voice {color:#4040a0; font-style:italic;}
+.info-box {margin:0.5em 0; border:solid 1px #cccccc; border-radius:0.2em; padding-left:3em;}
+.info-box p {margin:0.25em 0;}
+.timing {font-size:0.8em;}
+.caption {font-size:0.8em;}
+.sourcereference {margin-left:20%; font-size:0.8em; text-align:right;}
+.verse {margin:1em 2em;}
+.quote {margin:1em 2em;}
+.comment-author {padding:0 0.5em; color:#e65b00; background-color:#ffffff; font-size:1em; font-weight:normal; font-style:normal;}
+.comment-editor {padding:0 0.5em; color:#e80074; background-color:#ffffff; font-size:1em; font-weight:normal; font-style:normal;}
+.audio-reader-note {padding:0 0.5em; color:#c10031; background-color:#ffffff; font-size:1em; font-weight:normal; font-style:normal;}
+
+/* specific page types */
+#cover {text-align:center;}
+.notice {margin:0 0.2em; border:double 6px #c10031; padding:1em;}
+.half-title h1 {font-size:2em;}
+.title h1 {font-size:1em;}
+.title h2 {margin:1.6em 0 0.6em 0; font-size:2em; line-height:0.9em;}
+.title p {margin:0.6em 0;}
+.title-verso {font-size:0.8em;}
+.toc ul {margin:0 0 0 0.5em; padding:0; list-style:none;}
+.toc ul li {margin:0.4em 0 0 0; padding:0;}
+.toc ul ul {margin:0 0 0 1em; padding:0; list-style:none;}
+.toc ul li ul li {margin:0 0 0.4em 0; padding:0;}
+.unit_title h1 {margin:0.8em 0 0.6em 0; font-size:2em; line-height:0.9em;}
+.unit_title p {margin:0.6em 0;}
+
+.underline { text-decoration:underline; }
