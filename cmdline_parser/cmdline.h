@@ -22,4 +22,8 @@ typedef struct cmdline_args {
 
 extern int cl_args_count;
 extern cmdline_args *cl_args;
+int parse_cmdline(int argc, char **argv, const char* shortopts, 
+		struct option *longopts);
+char *go_short(int c);
+char *go_long(const char *name);
 #endif
