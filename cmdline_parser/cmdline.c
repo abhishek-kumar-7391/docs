@@ -27,7 +27,7 @@ static void dump_all_options(void)
 
 static void dump_cl_arg(cmdline_args *cl_args)
 {
-	fprintf(stderr, "[ Last ] -%c : %s\n", cl_args->opts.val,
+	fprintf(stderr, "[ Last ] %c : %s\n", cl_args->opts.val,
 			cl_args->optarg);
 }
 
@@ -93,7 +93,14 @@ int parse_cmdline(int argc, char **argv, const char* shortopts,
 					fprintf(stderr, "Invalid short option, %c\n", c);
 					return PARSE_FAILURE;
 				}
-
+				
+				
+				if(!optarg) {
+#ifdef DEBUG
+					fprintf(stderr, "Null argument for '%c'\n", c);
+#endif
+					continue;
+				}
 				if(add_new_option(&longopts[index], optarg) < 0) {
 					fprintf(stderr, "Error adding new option \n");
 					return PARSE_FAILURE;
@@ -107,12 +114,13 @@ static int option_exists(int c, const char *name)
 {
 	int i;
 #ifdef DEBUG
-	fprintf(stderr, "Checking existence for %c\n", c);
+	fprintf(stderr, "Checking existence for %c or %s\n", 
+			c, name);
 #endif
 	if(c >= 0) {
 		for(i=0;i<cl_args_count;i++) {
-			if(cl_args[i].opts.val == c)
-				return i;
+			if(cl_args[i].opts.val == c) 
+				return i;	
 		}
 	}else if(name) {
 		for(i=0;i<cl_args_count;i++) {
@@ -120,14 +128,14 @@ static int option_exists(int c, const char *name)
 				return i;
 		}
 	}
-	return 0;
+	return -1;
 }
 
 char *go_short(int c)
 {
 	int index;
 	if((index = option_exists(c, NULL)) >=0) 
-		return cl_args[index].optarg;		
+		return cl_args[index].optarg;	
 	return NULL;
 }
 
