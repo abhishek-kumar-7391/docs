@@ -1,7 +1,15 @@
 #include <stdio.h>
-#include <string.h>
 
-int main(int argc, char* argv[]){
-	printf("com = %d\n", strcmp(argv[1], argv[2]));
-	return 0;
+int main(void){
+	char* list[]={
+		[1] = "hello",
+		[255] = "world"
+	};
+
+	char line[256];
+	memset(line, '\0', 256);
+	sprintf(line, "%*s", 5, "hello");
+	printf("%s\n", line);
+	printf("len = %d\n", (int)strlen(line));
+	printf("len = %d\n", (int)(strchr(line, '\0') - line));
 }

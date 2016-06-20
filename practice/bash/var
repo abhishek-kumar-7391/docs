@@ -1,9 +1,0 @@
-#! /bin/bash
-
-var=$1
-if [ $var ]; then
-	echo "var = $var"
-else
-	echo "no value provided"
-fi
-
