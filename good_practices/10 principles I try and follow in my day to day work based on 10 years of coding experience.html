@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>10 principles I try and follow in my day to day work based on 10 years of coding experience</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="http://blog.christoffer.me/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="10%20principles%20I%20try%20and%20follow%20in%20my%20day%20to%20day%20work%20based%20on%2010%20years%20of%20coding%20experience_files/screen.css">
+    <link rel="stylesheet" type="text/css" href="10%20principles%20I%20try%20and%20follow%20in%20my%20day%20to%20day%20work%20based%20on%2010%20years%20of%20coding%20experience_files/css.css">
+
+    <link rel="canonical" href="http://blog.christoffer.me/10-principles-i-try-and-follow-in-my-day-to-day-work-based-on-10-years-of-coding-experience/">
+    <meta name="referrer" content="origin">
+    
+    <meta property="og:site_name" content="blog.christoffer.me">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="10 principles I try and follow in my day to day work based on 10 years of coding experience">
+    <meta property="og:description" content="I have been coding professionally for more than 10 years now, and like most, I have been coding in different languages at different stages of my life, most notable, PHP, Java, JavaScript and Dart. A mix of object oriented's prototype...">
+    <meta property="og:url" content="http://blog.christoffer.me/10-principles-i-try-and-follow-in-my-day-to-day-work-based-on-10-years-of-coding-experience/">
+    <meta property="article:published_time" content="2016-06-18T06:56:00.000Z">
+    <meta property="article:modified_time" content="2016-06-19T10:30:15.868Z">
+    <meta property="article:tag" content="coding-principles">
+    <meta property="article:tag" content="best-practices">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="10 principles I try and follow in my day to day work based on 10 years of coding experience">
+    <meta name="twitter:description" content="I have been coding professionally for more than 10 years now, and like most, I have been coding in different languages at different stages of my life, most notable, PHP, Java, JavaScript and Dart. A mix of object oriented's prototype...">
+    <meta name="twitter:url" content="http://blog.christoffer.me/10-principles-i-try-and-follow-in-my-day-to-day-work-based-on-10-years-of-coding-experience/">
+    
+    <script src="10%20principles%20I%20try%20and%20follow%20in%20my%20day%20to%20day%20work%20based%20on%2010%20years%20of%20coding%20experience_files/analytics.js" async=""></script><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "blog.christoffer.me",
+    "author": {
+        "@type": "Person",
+        "name": "Christoffer Pettersson",
+        "image": "http://blog.christoffer.me/content/images/2015/12/photo.jpg",
+        "url": "http://blog.christoffer.me/author/christoffer",
+        "sameAs": "http://www.christoffer.me",
+        "description": "Christoffer is a software and web developer, with primary expertise in the Java, JavaScript and Dart programming languages.\nRead more here: http://blog.christoffer.me/about-christoffer/"
+    },
+    "headline": "10 principles I try and follow in my day to day work based on 10 years of coding experience",
+    "url": "http://blog.christoffer.me/10-principles-i-try-and-follow-in-my-day-to-day-work-based-on-10-years-of-coding-experience/",
+    "datePublished": "2016-06-18T06:56:00.000Z",
+    "dateModified": "2016-06-19T10:30:15.868Z",
+    "keywords": "coding-principles, best-practices",
+    "description": "I have been coding professionally for more than 10 years now, and like most, I have been coding in different languages at different stages of my life, most notable, PHP, Java, JavaScript and Dart. A mix of object oriented&#x27;s prototype..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7">
+    <link rel="alternate" type="application/rss+xml" title="blog.christoffer.me" href="http://blog.christoffer.me/rss/">
+    <style>
+    .blog-logo {
+        position: fixed;
+    }
+     /*
+    .blog-logo:before {
+        content: 'home';
+        color: black;
+    }
+    */
+    /*
+    .site-wrapper .vertical {
+        background: center top no-repeat url("http://cdn.twitrcovers.com/wp-content/uploads/2012/09/Be-Original.jpg");
+        color: white;
+    }
+  */
+    .main-header {
+       /* background-position: center top;*/
+         height: 60vh;
+    }
+      
+	.post {
+        max-width: 1024px;
+    }
+    .post-content a {
+    	color: #0085FF;
+        text-decoration: none;
+    }
+    .post-content a:hover {
+        color: #0085FF;
+        text-decoration: underline;
+    }
+    .post-content p, .post-content li {
+        text-align: justify;
+    }
+    .post-content img {
+        max-width: 100%;
+    }
+    /*
+    .menu-button:before {
+        content: '';
+    }
+    */
+	.nav li::before, .nav li a::after {
+        content: '';
+    }
+</style>
+<style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style></head>
+<body class="post-template tag-coding-principles tag-best-practices nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+            <li class="nav-about-christoffer" role="presentation"><a href="http://blog.christoffer.me/about-christoffer/">About Christoffer</a></li>
+            <li class="nav-my-github" role="presentation"><a href="https://github.com/corgrath">My Github</a></li>
+            <li class="nav-my-twitter" role="presentation"><a href="https://twitter.com/corgrath">My Twitter</a></li>
+            <li class="nav-my-linkedin" role="presentation"><a href="https://se.linkedin.com/in/christofferpettersson">My LinkedIn</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="http://blog.christoffer.me/rss/">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="blog-logo" href="http://blog.christoffer.me/"><img src="10%20principles%20I%20try%20and%20follow%20in%20my%20day%20to%20day%20work%20based%20on%2010%20years%20of%20coding%20experience_files/home-3.svg" alt="blog.christoffer.me"></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-coding-principles tag-best-practices">
+
+        <header class="post-header">
+            <h1 class="post-title">10 principles I try and follow in my day to day work based on 10 years of coding experience</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-06-18">18 June 2016</time>  on <a href="http://blog.christoffer.me/tag/coding-principles/">coding-principles</a>, <a href="http://blog.christoffer.me/tag/best-practices/">best-practices</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>I have been coding professionally for more than 10 years 
+now, and like most, I have been coding in different languages at 
+different stages of my life, most notable, <a href="https://en.wikipedia.org/wiki/PHP">PHP</a>, <a href="https://en.wikipedia.org/wiki/Java_" title="programming_language">Java</a>, <a href="https://en.wikipedia.org/wiki/JavaScript">JavaScript</a> and <a href="https://en.wikipedia.org/wiki/Dart_" title="programming_language">Dart</a>. A mix of <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">object oriented</a>'s <a href="https://en.wikipedia.org/wiki/Prototype-based_programming">prototype</a> vs <a href="https://en.wikipedia.org/wiki/Class-based_programming">class based</a>,  <a href="https://en.wikipedia.org/wiki/Compiled_language">compiling</a> vs <a href="https://en.wikipedia.org/wiki/Scripting_language">scripting</a>, <a href="https://en.wikipedia.org/wiki/Concurrent_computing">concurrent</a> vs <a href="https://en.wikipedia.org/wiki/Thread_%28computing%29#Single_threading">single threaded</a>, <a href="https://en.wikipedia.org/wiki/Structured_programming">structured</a> and <a href="https://en.wikipedia.org/wiki/Functional_programming">functional</a> languages.</p>
+
+<p>From what I have learned is that coding pretty much follows <a href="https://en.wikipedia.org/wiki/Bushnell%27s_Law">Bushnell's law</a> for a great computer game:</p>
+
+<blockquote>
+  <p>It's easy to learn, and hard to master.</p>
+</blockquote>
+
+<p>The more you code in different languages, the easier it is to adopt 
+new ones (as you recognize and become more familiar with different <a href="https://en.wikipedia.org/wiki/Software_design_pattern">patterns</a> and <a href="https://en.wikipedia.org/wiki/Programming_paradigm">paradigms</a>)
+ and the more time you invest in mastering a language, it helps you 
+write really great code even though you are totally new to a language.</p>
+
+<p>Here are my 10 principles I try and follow in my day and day work, 
+based on all the experience and knowledge I have accumulated over the 
+last 10 years.</p>
+
+<ul>
+<li>I try to write my code as if it was part of an open source project on GitHub</li>
+<li>I try to make my code testable, even though I am not actually writing any tests</li>
+<li>I always try to write defensive code</li>
+<li>I always try to fail fast and fail immediately</li>
+<li>I always try to write truthy conditions</li>
+<li>As soon something is done twice, I try to extract it into its own function</li>
+<li>I try to use "we" and "this" instead of "you" and "your" in code reviews</li>
+<li>I always try and provide a link with proof if I fail someone else's code during a  code review</li>
+<li>If someone asks a question on my code during code review, I will try and add the answer as a comment in the code as well</li>
+<li><p>Update the static code analysis tools along the way to prevent unnecessary code review work</p></li>
+<li><p>Comment on Reddit</p></li>
+</ul>
+
+<h2 id="itrytowritemycodeasifitwaspartofanopensourceprojectongithub">I try to write my code as if it was part of an open source project on GitHub</h2>
+
+<p>Let me ask you this simple question.</p>
+
+<p>If you each time you write code imagine it's a part of an <a href="https://en.wikipedia.org/wiki/Open-source_software">open source</a> project on <a href="https://github.com/">GitHub</a>
+ and will be published and public and to the whole world to see, I think
+ you would have a totally different mind set when coding. I think you 
+will spend more time on making the code and structure as professional as
+ it can be, right?</p>
+
+<p>Of course you will, since you that code will have your name on it and
+ the whole world will see and judge you as a developer based on that 
+code - especially if it contains any bugs! So you will probably always 
+try and ensure writing clear non-ambiguous structured code, with no 
+silly names or junk debug statements leaving around, have great 
+documentation and you would probably even spend time writing unit tests.</p>
+
+<p>I feel this way at least, so having this mindset (regardless if its 
+company's code, my side projects, or actually a real open source 
+projects) pushes me to write the best code I possibly can.</p>
+
+<h2 id="itrytowritemycodetestableeventhoughiamnotactuallywritinganytests">I try to write my code testable, even though I am not actually writing any tests</h2>
+
+<p>Let's be honest, even though everyone knows units tests are great, 
+you as a coder won't always have or have been given time to write them. 
+That's okay, but even though you know you won't have time to write any 
+tests, you should still write your code test friendly. </p>
+
+<p>Learning how to write testable code is something you simply learn from experience though. For example, if you adopt TDD (<a href="https://en.wikipedia.org/wiki/Test-driven_development">Test Driven Development</a>)
+ for a project or a period of time, or have a goal to have 100% in 
+coverage for a product part, you will quickly learn what code is 
+impossible to test and which code is perfectly setup  to be able to be 
+unit tested.</p>
+
+<p>From my experience, this always almost results in using patterns such as <a href="https://en.wikipedia.org/wiki/Inversion_of_control">inversion of control</a>, <a href="https://en.wikipedia.org/wiki/Dependency_injection">dependency injection</a>, following the <a href="https://en.wikipedia.org/wiki/SOLID_" title="object-oriented_design">SOLID principles</a>,
+ etc. With other external dependencies should always be given and never 
+fetched, writing small but many methods with a very clear input and 
+output with a clear <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a> and with <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle">single responsibilities</a>.</p>
+
+<h2 id="ialwaystrytowritedefensivecode">I always try to write defensive code</h2>
+
+<p>After 10 years of coding, I have serious <a href="http://explosm.net/comics/2223/">trust issues</a>. The code I write never trusts anything or anyone any more.</p>
+
+<p>The thing is that different developers have different experiences, 
+personal styles and even mind sets. Based on personal experience, one 
+simple function can be interpreted in two totally different ways 
+depending on the developers and their own past experience and each 
+developer thinks their interpretation is the clear obvious one.</p>
+
+<p>That's why I always often code practice <a href="https://en.wikipedia.org/wiki/Defensive_programming">defensive programming</a>.
+ With other words, I always make sure that methods and functions I write
+ will be called as I intended them to be called, for example by adding <a href="https://en.wikipedia.org/wiki/Assertion_" title="software_development">assertions</a> in the beginning of the function body. Regardless if its a private of a public function, and especially if I am coding in <a href="https://en.wikipedia.org/wiki/Strong_and_weak_typing">loosely typed languages</a> or functions with optional arguments.</p>
+
+<p>Yes, the code becomes more verbose, but it helps me ensure that the 
+function cannot be abused now, or in the future, hence making my code 
+less error prone or being a cause of any misinterpretations for anyone 
+using the code.</p>
+
+<p>Here is a JavaScript example:</p>
+
+<pre><code class="language-javascript">function isValidAge( age, countryISOCode ) {
+
+    // Make sure age is provided
+    if( age === undefined )  {
+        throw new Error("Age is undefined.");
+    }
+
+    // Make sure age is a number
+    if( typeof age !== "number" )  {
+        throw new Error("Age is not a number.");
+    }
+
+    // countryISOCode is optional
+    if( !countryISOCode ) {
+
+        // Make sure the code is a string
+        if( typeof countryISOCode !== "string" ) {
+            throw new Error("Optional argument country ISO code is not a string.");
+        }
+
+        // Make sure its a 3 character ISO code
+        if( countryISOCode.length !== 3 ) {
+            throw new Error("Optional argument country ISO needs to be 3 character code.");
+        }
+
+    }
+
+    ...
+
+}
+</code></pre>
+
+<h2 id="ialwaystrytofailfastandfailimmediately">I always try to fail fast and fail immediately</h2>
+
+<p>Another pattern I have adopted a long the years is to always try and 
+figure out if the execution should fail as soon as possible by 
+practicing the <a href="https://en.wikipedia.org/wiki/Fail-fast">fail fast design</a>.</p>
+
+<p>Here is a bad example in JavaScript where the code slowly dies.</p>
+
+<pre><code class="language-javascript">function doSomething( arg1, arg2 ) {
+
+    ... 
+
+    if( arg1 ) {
+
+       ...
+
+        if( arg2 ) {
+            ... 
+        } else {
+            throw new Error("Argument 2 is undefined");
+        }
+
+    } else {
+       throw new Error("Argument 1 is missing.");
+    }
+
+    ...
+
+}
+</code></pre>
+
+<p>And here is a rewritten version that fails fast and fails 
+immediately. Please also note that this design decreases code 
+indentations.</p>
+
+<pre><code class="language-javascript">function doSomething( arg1, arg2 ) {
+
+    if( !arg1 ) {
+        throw new Error("Argument 1 is missing.");
+    } 
+
+    if( !arg2 ) {
+        throw new Error("Argument 2 is missing.");
+    }
+
+    ...
+
+}
+</code></pre>
+
+<h2 id="ialwaystrytowritetruthyconditions">I always try to write truthy conditions</h2>
+
+<p>We humans gets easily confused with double negation conditions. When 
+other people read my code, I want them to instantly understand the 
+conditions. That's why I always try and write truthy statements.</p>
+
+<p>Here is a simple bad example in JavaScript, which probably confuses most people:</p>
+
+<pre><code class="language-javascript">function driveCar(age, country) {
+
+    if( country !== "sweden" || !isUnderAged(age) ) {
+        ...
+    }
+
+    throw new Error("Person is not allowed to drive this  car!");
+
+}
+</code></pre>
+
+<p>Compared to this rewritten to only use truthy conditions statements, which probably is easier to read and understand:</p>
+
+<pre><code class="language-javascript">function driveCar(age, country) {
+
+    if( livesInSweden(country) &amp;&amp; isUnderAged(age) )  {
+        // Failing fast
+        throw new Error("Person is not allowed to drive this car!");
+    }
+
+    ...
+
+}
+</code></pre>
+
+<h2 id="assoonsomethingisdonetwiceitrytoextractitintoitsownfunction">As soon something is done twice, I try to extract it into its own function</h2>
+
+<p>I am a strong believer of DRY (<a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">Don't Repeat Yourself</a>) in order to avoid <a href="https://en.wikipedia.org/wiki/Duplicate_code">code duplication</a>,
+ so as soon as I see a piece of code, or even a string, being used 
+again, I try extract the logic into a new function, or if it is a 
+variable, into a constant.</p>
+
+<p>I have noticed that having this habit, regardless of language and project, it is a very cheap way to keep the code healthy.</p>
+
+<p>For example, if I notice the code is already:</p>
+
+<pre><code class="language-javascript">function updatePageTitle(page) {  
+    ...
+    if ( page.type === "about" ) {
+         ...
+    }
+    ...
+}
+</code></pre>
+
+<p>And in another place I need to check if the page type is <code>about</code>, I will instantly refactor the code to be:</p>
+
+<pre><code class="language-javascript">// This is the new function that is shared
+function isPageTypeAbout( page ) {  
+    return page.type === "about";
+}
+
+function updatePageTitle( page ) {  
+    ...
+    if ( isPageTypeAbout(page) ) {
+         ...
+    }
+    ...
+}
+
+function myNewFunction( page ) {  
+    ...
+    if ( isPageTypeAbout(page) ) {
+        ...
+    }
+    ...
+}
+</code></pre>
+
+<p>Instead of duplicating <code>page.type === "about"</code> check.</p>
+
+<p>Even if this is a very simple case, I usually follow the "one method,
+ one responsibility" philosophy. Meaning, the logic to determine if the 
+page type is about, should not be duplicated. There should only be one 
+method that has responsibility to figure that out.</p>
+
+<h2 id="itrytouseweandthisinsteadofyouandyourincodereviews">I try to use "we" and "this" instead of "you" and "your" in code reviews</h2>
+
+<p>Humans become very defensive when they are being criticized. That's natural, even during a code review process.</p>
+
+<p>In order to put the code in focus as a separate entity our job is to 
+maintain - compared to portraying that I am criticizing the developer 
+directly - I deliberately try and to shift my terminology when writing 
+code review comments. So instead of using "you" and "your", I try and 
+use "we" and "this".</p>
+
+<p>For example, instead of writing:</p>
+
+<blockquote>
+  <p>Are you sure want to do it like this? Because ...</p>
+</blockquote>
+
+<p>or</p>
+
+<blockquote>
+  <p>Your solution will break the database migration task.</p>
+</blockquote>
+
+<p>I try and write:</p>
+
+<blockquote>
+  <p>Are we sure we want it like this? Because ...</p>
+</blockquote>
+
+<p>and</p>
+
+<blockquote>
+  <p>This solution will break the database migration task.</p>
+</blockquote>
+
+<h2 id="ialwaystryandprovidealinkwithproofififailsomeoneelsescodeduringacodereview">I always try and provide a link with proof if I fail someone else's code during a  code review</h2>
+
+<p>As we all know, in code review it's very easy that your own personal 
+opinions on how things should be implemented and work gets pushed. Even 
+so hard that can even lead to a toxic discussion between developers.</p>
+
+<p>Personal opinions are great, but should probably most times only be 
+suggestions in the code review while things that can really break or 
+hurt the solution warrants a rejected revision.</p>
+
+<p>In my personal experience, in order to make a clear distinction 
+between my personal opinions and what is factually good things to point 
+out, I always try and provide a link to an external resource explaining 
+the problem or the reason why the code revision is a bad idea, when 
+rejecting it. </p>
+
+<p>For example a comment could look like:</p>
+
+<blockquote>
+  <p>-1</p>
+  
+  <p>I think we should check for a <em>falsy</em> value instead (<code>if( !name ) { ... }</code>), since <code>Element.getAttribute()</code> can return both <code>null</code> and an empty string <code>""</code>.</p>
+  
+  <p><a href="https://developer.mozilla.org/en/docs/Web/API/Element/getAttribute">https://developer.mozilla.org/en/docs/Web/API/Element/getAttribute</a></p>
+</blockquote>
+
+<h2 id="ifsomeoneasksaquestiononmycodeduringcodereviewiwilltryandaddtheanswerasacommentinthecodeaswell">If someone asks a question on my code during code review, I will try and add the answer as a comment in the code as well</h2>
+
+<p>If I ever get a question on what my code does during the code review 
+process, then this is a great warning flag that the code was not so 
+obvious as I thought it would be (regardless of reason).</p>
+
+<p>In that case, lets be honest here, the chances are pretty high that 
+if the code reviewer had to ask it about, then someone else in the 
+future will be confused about it as well, once it has been submitted to 
+the VCS (<a href="https://en.wikipedia.org/wiki/Version_control">Version Control System</a>).</p>
+
+<p>That's why I always try and update the actual code with more 
+comments, or rewrite existing comments, prior to sending it into the 
+VCS, to help future developers reading and understanding my code.</p>
+
+<h2 id="updatethestaticcodeanalysistoolsalongthewaytopreventunnecessarycodereviewwork">Update the static code analysis tools along the way to prevent unnecessary code review work</h2>
+
+<p>All glory to cheap test processes such as unit testing, but over the last few years, I think that <a href="https://en.wikipedia.org/wiki/Static_program_analysis">static code analysis</a> and <a href="https://en.wikipedia.org/wiki/Lint_" title="software">linting</a> is equally important in a <a href="https://en.wikipedia.org/wiki/Software_development_process">software development process</a>.</p>
+
+<p>Unit testing checks business requirements and code, but a proper 
+static code analysis setup in a build process can check literally 
+everything in a project, before it even reaches human eyes in a code 
+review.</p>
+
+<p>Everything from enforcing file name conventions to checking that that the <code>type</code> attribute is always explicitly specified for <code>&lt;button&gt;</code>s in HTML, or that no <code>&lt;a&gt;</code> elements uses <code>target="_blank"</code> to avoid <a href="https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/">obscured vulnerabilities</a>.</p>
+
+<p>The more you can catch by machines by linting and static code 
+analysis before it even reaches human interaction, the better, as 
+machines will remember to check everything with code.</p>
+
+<h2 id="commentonreddit">Comment on Reddit</h2>
+
+<p>As always, feel free to share your comments, opinions and feedback 
+over at the Reddit threads. There are some great discussions over there!</p>
+
+<ul>
+<li><a href="https://www.reddit.com/r/webdev/comments/4op4vm/">/r/webdev/</a></li>
+<li><a href="https://www.reddit.com/r/programming/comments/4op508/">/r/programming/</a></li>
+</ul>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="http://blog.christoffer.me/author/christoffer/" style="background-image: url(/content/images/2015/12/photo.jpg)"><span class="hidden">Christoffer Pettersson's Picture</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="http://blog.christoffer.me/author/christoffer/">Christoffer Pettersson</a></h4>
+
+                    <p>Christoffer is a software and web developer, with primary expertise in the Java, JavaScript and Dart programming languages.
+Read more here: http://blog.christoffer.me/about-christoffer/</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Sweden</span>
+                    <span class="author-link icon-link"><a href="http://www.christoffer.me/">http://www.christoffer.me</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=10%20principles%20I%20try%20and%20follow%20in%20my%20day%20to%20day%20work%20based%20on%2010%20years%20of%20coding%20experience&amp;url=http://blog.christoffer.me/10-principles-i-try-and-follow-in-my-day-to-day-work-based-on-10-years-of-coding-experience/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.christoffer.me/10-principles-i-try-and-follow-in-my-day-to-day-work-based-on-10-years-of-coding-experience/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.christoffer.me/10-principles-i-try-and-follow-in-my-day-to-day-work-based-on-10-years-of-coding-experience/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story prev no-cover" href="http://blog.christoffer.me/good-guy-blizzard-sent-me-a-mouse-pad-after-i-sent-a-20-year-old-warranty-card/">
+        <section class="post">
+            <h2>Good guy Blizzard sent me a mouse pad after I sent in a 20 year old warranty card for Warcraft 2</h2>
+            <p>When a company does something cool for a random individual, I think it's a story worth sharing - so…</p>
+        </section>
+    </a>
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://blog.christoffer.me/">blog.christoffer.me</a> © 2016</section>
+            <section class="poweredby">Proudly published with <a href="https://ghost.org/">Ghost</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="10%20principles%20I%20try%20and%20follow%20in%20my%20day%20to%20day%20work%20based%20on%2010%20years%20of%20coding%20experience_files/jquery-1.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40127647-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script>
+    /*
+    document.querySelector(".menu-button").innerHTML = "About Christoffer";
+    document.querySelector(".menu-button").href = "http://blog.christoffer.me/about-christoffer/";
+    */
+</script>
+
+    <script type="text/javascript" src="10%20principles%20I%20try%20and%20follow%20in%20my%20day%20to%20day%20work%20based%20on%2010%20years%20of%20coding%20experience_files/jquery.js"></script>
+    <script type="text/javascript" src="10%20principles%20I%20try%20and%20follow%20in%20my%20day%20to%20day%20work%20based%20on%2010%20years%20of%20coding%20experience_files/index.js"></script>
+
+
+
+</body></html>

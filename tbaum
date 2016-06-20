@@ -1,3 +1,8 @@
 network hardware : 
+
+Two switches connected in loop:
+	. its the job of the underlying protocols to avoid packet looping.
+
+VLANS: switches color the ports with different colors, 
 	
 
